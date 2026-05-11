@@ -110,8 +110,8 @@ Provider density does not consistently translate into lower unit costs across st
 - New York
 - California
 
-### Lower cost comparison:
-- Illinois
+### Lower cost:
+- Wyoming
 
 ### Insight:
 Some high-spending states also show elevated cost per service, indicating differences in delivery cost structures.
