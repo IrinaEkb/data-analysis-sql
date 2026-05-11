@@ -1,192 +1,181 @@
 
 # Medicare Spending Analysis Across U.S. States (2014–2023)
 
-## Project Overview
+## Project Structure
 
-This project analyzes Medicare spending across all U.S. states using CMS aggregated data (2014–2023).
+```text
+medicare/
+│
+├── data/
+│   └── state_summary.csv
+│
+├── excel/
+│   ├── cleanedData.png
+│   └── pivotTable.png
+│
+├── sql_queries.sql
+├── .gitignore
+└── README.md
+```
 
-The main focus is a subset of **top spending states**, used to understand what drives differences in Medicare expenditures:
+---
+
+# Project Overview
+
+This project analyzes Medicare spending across U.S. states using CMS aggregated data from 2014–2023.
+
+The analysis focuses on understanding what drives differences in Medicare expenditures across states:
+
 - utilization (service volume)
 - pricing (cost per service)
 - provider distribution
 
 ---
 
-## Tools Used
+# Tools Used
 
 - MySQL
 - Microsoft Excel (data exploration and validation)
 
 ---
 
-## Data Source
+# Data Source
 
 CMS Medicare State Summary dataset  
 Coverage: **2014–2023 (10 years)**
 
-Dataset includes:
-- total Medicare payments
-- total services
-- total providers
-- average markup ratio
+---
 
-Source: https://www.openmedicare.us
+# Data Preparation & Validation
+
+The original dataset included all U.S. states and territories.
+
+Data cleaning and validation steps included:
+
+- verified total row count
+- checked missing values in key fields
+- removed duplicate state entries
+- standardized valid state codes only
+
+### Missing values check
+
+Used to identify incomplete records in key fields:
+
+```sql
+SELECT *
+FROM state_summary
+WHERE state IS NULL
+   OR total_payments IS NULL
+   OR total_services IS NULL
+   OR total_providers IS NULL;
+   ```
+### Duplicate state validation
+
+Used to ensure each state appears only once or is properly aggregated:
+
+```sql
+SELECT state, COUNT(*)
+FROM state_summary
+GROUP BY state
+HAVING COUNT(*) > 1;
+```
+### Data aggregation (state-level standardization)
+
+Converted raw dataset into one row per state:
+
+```sql
+CREATE TABLE state_summary_clean AS
+SELECT
+    state,
+    SUM(total_payments) AS total_payments,
+    SUM(total_services) AS total_services,
+    SUM(total_providers) AS total_providers,
+    AVG(avg_markup_ratio) AS avg_markup_ratio
+FROM state_summary
+GROUP BY state;
+```
 
 ---
 
-## Data Preparation & Validation
-
-Initial dataset included all U.S. states and territories.  
-Data was checked and transformed into a state-level aggregated dataset for analysis.
-
-### Checks performed:
-
-- Verified total row count
-- Checked missing values in key fields
-- Verified no duplicate states
-- Standardized analysis to valid state codes only
-
-### Aggregation step:
-
-Data was consolidated to one row per state using:
-
-- total payments (sum)
-- total services (sum)
-- total providers (sum)
-- average markup ratio (average)
-
-This created a cleaned state-level dataset used for analysis.
-
----
-
-## Analysis Approach
-
-The analysis focused on:
-
-- Top states by Medicare spending
-- Bottom states by Medicare spending
-- Cost per service (efficiency metric)
-- Services per provider
-- Provider distribution across states
-- Comparison of high vs low spending states
-
----
-
-## Key Findings
-
-## What drives Medicare spending across large states — utilization or pricing?
-
-Medicare spending among the highest-spending states is primarily driven by **utilization (service volume)**.
-
-
-### Insight:
-A small group of states accounts for a large share of total Medicare spending due to both population size and utilization intensity.
-
-
-# Medicare Spending Analysis Across Large States
-
-## 1. What drives Medicare spending across large states — utilization or pricing?
-
-Medicare spending among the top 10 spending states is primarily driven by **utilization (service volume)**.
-
-### Key observations:
-
-- **Florida**
-    - Services: 5.13B
-    - Total payments: $160.8B
-    - Cost per service: 31.34
-
-- **California**
-    - Services: 4.76B
-    - Total payments: $186.4B
-    - Cost per service: 39.19
-
-- **Texas**
-    - Services: 3.78B
-    - Total payments: $125.9B
-    - Cost per service: 33.31
-
-- **New York**
-    - Services: 2.96B
-    - Total payments: $116.4B
-    - Cost per service: 39.32
-
-### Core insight:
-States with higher total payments consistently have **significantly higher service volumes**. Cost per service varies moderately across states, while differences in total spending are strongly aligned with differences in utilization.
-
----
-
-## 2. Do more productive providers reduce healthcare costs?
-
-Within the top 10 Medicare spending states, there is **no consistent relationship** between provider productivity and lower healthcare costs.
-
-### Key observations:
-
-- **Florida**
-    - Providers: 1.33M
-    - High service volume
-    - Cost per service: 31.34
-
-- **California**
-    - Providers: 1.68M
-    - High service volume
-    - Cost per service: 39.19
-
-- **New York**
-    - Providers: 1.48M
-    - Lower service volume
-    - Cost per service: 39.32
-
-### Insight:
-Across high-spending states, higher provider activity does not consistently translate into lower cost per service. Cost levels vary independently of provider density and productivity.
-
----
-
-## 3. Which states appear operationally inefficient?
-
-Operational differences are observed among high-spending states where elevated cost per service aligns with high total spending.
-
-### High-spending / higher-cost states:
-
-- **New York**
-    - Total spending: $116.4B
-    - Cost per service: 39.32
-
-- **California**
-    - Total spending: $186.4B
-    - Cost per service: 39.19
-
-### Comparison:
-
-- **Illinois**
-    - Total spending: $70.7B
-    - Cost per service: 33.89
-
-### Insight:
-New York and California combine high total spending with higher unit costs, reflecting more expensive service delivery structures compared to lower-cost states such as Illinois.
-
----
-
-## 4. How concentrated is Medicare spending across states?
-
-Medicare spending is concentrated in a small number of large states.
-
-### Top states:
-
-- **California**: $186.4B
-- **Florida**: $160.8B
-- **Texas**: $125.9B
-- **New York**: $116.4B
-
-### Insight:
-These states account for a substantial share of total Medicare payments, driven by both population size and high service utilization.
-
-## Data Validation (SQL + Excel)
-
+# Cleaned and unified dataset in Excel
 ![Cleaned Data](excel/cleanedData.png)
 
 ---
 
-## Pivot Table Analysis
+#  Pivot 1: Medicare Spending Drivers by State
 
-![Pivot Table Results](excel/pivotTable.png)
+![Pivot Table - Spending Drivers](excel/pivotTable1.png)
+
+##  Business Question
+What drives differences in Medicare spending across states — **service utilization (volume)** or **pricing (cost per service)**?
+
+---
+
+##  Key Insights
+
+- Medicare spending variation across states is mainly driven by **service utilization (volume)** rather than pricing metrics such as cost per service or markup ratio. High-spending states (CA, FL, TX, NY) consistently show higher service volumes rather than significantly higher price levels.
+- Cost per service remains relatively stable across states (~31–39), suggesting limited variation in pricing.
+- Markup ratio does not directly correlate with total Medicare spending. For example, Georgia shows a relatively high markup ratio despite lower total spending compared to Texas, indicating that pricing intensity is independent of system scale.
+
+---
+
+###  Recommendations
+
+**1. Focus on utilization control**
+- Target high-volume states (CA, FL, TX)
+- Establish benchmarks for services per provider
+
+**2. Define efficiency KPIs**
+- Services per provider
+- Provider productivity metrics
+- Standardized utilization indicators across states
+
+**3. Investigate structural pricing outliers**
+States such as GA (high markup ratio but lower total spending) may reflect differences in service mix or localized pricing structures.
+
+**4. Prioritize volume over price interventions**
+Since pricing is relatively stable, cost containment strategies should focus on **reducing unnecessary utilization rather than adjusting prices**.
+
+#  Pivot 2: Efficiency Ranking by State
+
+![Pivot Table - Efficiency Ranking](excel/pivotTable2.png)
+
+##  Business Question
+Which states show signs of **system overload** or **costly healthcare delivery structures**?
+
+---
+
+##  Key Insights
+
+- States with the highest **services per provider** (FL, NJ, GA) also tend to have lower or mid-range **cost per service**.  
+  This suggests that high workload is driven by **volume pressure, not higher pricing**.  
+  Example: FL has the highest service load (3,848) but one of the lowest costs per service (31.34).
+
+---
+
+- States with the highest **cost per service** (NY, CA) do not have the highest utilization levels.  
+  This indicates a **cost-driven efficiency issue**, not workload pressure.  
+  Example: NY has high cost per service (~39) but lower service intensity (~1,997 per provider).
+
+---
+
+- **Markup ratio variations** (e.g., TX, GA) do not align consistently with either volume or cost patterns.  
+  This suggests pricing structure differences exist independently from utilization levels.
+
+---
+
+### 💡 Recommendations
+
+**1. Address workload pressure where volume is high**
+- FL, NJ → expand provider capacity to reduce overload
+
+**2. Investigate high-cost systems**
+- NY, CA → review pricing and reimbursement structures
+
+**3. Do not assume correlation between cost and volume**
+- High utilization ≠ high cost per service
+- States behave differently across these dimensions
+
+**4. Use dual-axis policy view**
+- One axis = workload (services per provider)
+- Second axis = pricing efficiency (cost per service)
