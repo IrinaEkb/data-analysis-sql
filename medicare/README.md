@@ -231,10 +231,10 @@ These states account for a substantial share of total Medicare payments, driven 
 
 ## Data Validation (SQL + Excel)
 
-![Cleaned Data](medicare/images/CleanedData.png)
+![Cleaned Data](medicare/excel/CleanedData.png)
 
 ---
 
 ## Pivot Table Analysis
 
-![Pivot Table Results](medicare/images/pivotTable.png)
+![Pivot Table Results](medicare/excel/pivotTable.png)
