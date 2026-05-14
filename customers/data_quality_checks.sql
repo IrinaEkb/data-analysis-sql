@@ -124,3 +124,8 @@ from customer_shopping_data
 where invoice_date not regexp '^[0-9]{1,2}/[0-9]{1,2}/[0-9]{2,4}$';
 -- no invalid date formats in dataset
 
+-- check for dates that cannot be parsed
+select invoice_date
+from customer_shopping_data
+where str_to_date(invoice_date, '%d/%m/%Y') is null;
+-- mo errors with date parsing
