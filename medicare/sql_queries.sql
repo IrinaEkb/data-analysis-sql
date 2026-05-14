@@ -15,7 +15,7 @@ FROM state_summary
 GROUP BY state
 HAVING COUNT(*) > 1;
 
--- Cleaned aggregated dataset (one row per state)
+-- Cleaned aggregated dataset (one raw per state)
 CREATE TABLE state_summary_clean AS
 SELECT
     state,

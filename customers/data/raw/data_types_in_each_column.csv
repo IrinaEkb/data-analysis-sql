@@ -1,0 +1,11 @@
+Field,Type,Null,Key,Default,Extra
+invoice_no,text,YES,"",,""
+customer_id,text,YES,"",,""
+gender,text,YES,"",,""
+age,int,YES,"",,""
+category,text,YES,"",,""
+quantity,text,YES,"",,""
+price,text,YES,"",,""
+payment_method,text,YES,"",,""
+invoice_date,text,YES,"",,""
+shopping_mall,text,YES,"",,""
