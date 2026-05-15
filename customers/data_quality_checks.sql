@@ -65,7 +65,7 @@ from customer_shopping_data;
 
 select distinct category
 from customer_shopping_data;
--- all categories are unique, no capslock issues
+-- all category names are unique, no capslock issues
 
 select distinct payment_method
 from customer_shopping_data;
@@ -124,8 +124,44 @@ from customer_shopping_data
 where invoice_date not regexp '^[0-9]{1,2}/[0-9]{1,2}/[0-9]{2,4}$';
 -- no invalid date formats in dataset
 
+-- check for non-numeric values in quantity
+select quantity
+from customer_shopping_data
+where trim(quantity) not regexp '^[0-9]+$';
+-- no non-numeric values in quantity
+
+-- check for non-numeric values in price
+select price
+from customer_shopping_data
+where trim(price) not regexp '^[0-9]+(\.[0-9]+)?$';
+-- no invalid price formats
+
 -- check for dates that cannot be parsed
 select invoice_date
 from customer_shopping_data
 where str_to_date(invoice_date, '%d/%m/%Y') is null;
 -- mo errors with date parsing
+
+-- check for futute dates
+select * from customer_shopping_data
+where invoice_date > current_date;
+-- no future dates
+
+-- check for negative or zero values in quantity
+select *
+from customer_shopping_data
+where quantity <= 0;
+-- no negative values in quantity
+
+-- check for unrealistic age values
+select *
+from customer_shopping_data
+where age < 0
+   or age > 120;
+-- no unrealistic age values
+
+-- check for negative or zero values in price
+select *
+from customer_shopping_data
+where price <= 0;
+-- no errors
