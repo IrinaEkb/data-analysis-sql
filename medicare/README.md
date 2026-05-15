@@ -13,7 +13,7 @@ medicare/
 │   ├── cleanedData.png
 │   └── pivotTable.png
 │
-├── data_quality_checks.sql
+├── 01_data_quality_checks.sql
 ├── .gitignore
 └── README.md
 ```
