@@ -1,0 +1,81 @@
+#,gender,age_group,category,revenue,avg_order_value
+1,Female,46-60,Clothing,5369331.44,906.83
+2,Male,46-60,Clothing,3631568.16,912.45
+3,Female,36-45,Clothing,3601860.24,891.99
+4,Female,26-35,Clothing,3594058.16,900.09
+5,Female,60+,Clothing,3179347.60,902.71
+6,Female,46-60,Shoes,3060266.83,1774.07
+7,Female,18-25,Clothing,2872065.68,903.73
+8,Female,46-60,Technology,2654400.00,3201.93
+9,Male,36-45,Clothing,2415944.08,903.83
+10,Male,26-35,Clothing,2353527.44,897.95
+11,Female,36-45,Shoes,2175616.25,1845.31
+12,Male,60+,Clothing,2173479.44,904.86
+13,Male,46-60,Shoes,2059183.27,1785.94
+14,Female,26-35,Shoes,1976359.81,1782.11
+15,Female,36-45,Technology,1953000.00,3212.17
+16,Male,18-25,Clothing,1884502.40,872.86
+17,Female,60+,Shoes,1877331.76,1812.10
+18,Female,26-35,Technology,1785000.00,3040.89
+19,Male,46-60,Technology,1771350.00,3140.69
+20,Female,18-25,Shoes,1657069.37,1805.09
+21,Female,60+,Technology,1589700.00,3166.73
+22,Male,26-35,Shoes,1512428.40,1846.68
+23,Female,18-25,Technology,1443750.00,3173.08
+24,Male,36-45,Shoes,1389993.72,1860.77
+25,Male,36-45,Technology,1373400.00,3179.17
+26,Male,60+,Shoes,1263958.02,1765.30
+27,Male,26-35,Technology,1195950.00,3189.20
+28,Male,18-25,Shoes,1163129.46,1840.39
+29,Male,60+,Technology,1132950.00,3255.60
+30,Male,18-25,Technology,872550.00,2947.80
+31,Female,46-60,Cosmetics,315724.90,120.32
+32,Male,46-60,Cosmetics,219645.32,123.19
+33,Female,36-45,Cosmetics,216270.54,122.88
+34,Female,26-35,Cosmetics,212489.16,122.68
+35,Female,60+,Cosmetics,192362.46,121.90
+36,Female,46-60,Toys,181672.96,107.31
+37,Female,18-25,Cosmetics,171585.20,124.70
+38,Male,36-45,Cosmetics,142757.26,124.57
+39,Male,26-35,Cosmetics,142228.68,122.29
+40,Female,36-45,Toys,130851.84,108.14
+41,Female,26-35,Toys,128558.08,106.95
+42,Male,60+,Cosmetics,127509.76,123.20
+43,Male,46-60,Toys,121067.52,107.71
+44,Female,60+,Toys,118630.40,110.05
+45,Male,18-25,Cosmetics,108033.62,120.04
+46,Female,18-25,Toys,98380.80,109.07
+47,Male,36-45,Toys,80604.16,105.78
+48,Male,26-35,Toys,79385.60,106.13
+49,Male,18-25,Toys,73973.76,108.63
+50,Male,60+,Toys,73579.52,107.10
+51,Female,46-60,Food & Beverage,38246.99,15.64
+52,Female,46-60,Books,37981.05,44.22
+53,Female,46-60,Souvenir,30896.82,35.23
+54,Female,36-45,Food & Beverage,28294.30,15.69
+55,Male,46-60,Books,27769.95,45.52
+56,Male,46-60,Food & Beverage,27065.25,15.81
+57,Female,36-45,Books,26391.30,46.46
+58,Female,26-35,Food & Beverage,26150.00,15.92
+59,Female,26-35,Books,25709.55,46.16
+60,Female,60+,Food & Beverage,24152.14,15.50
+61,Female,60+,Books,22134.15,46.02
+62,Female,18-25,Food & Beverage,21029.83,15.53
+63,Female,26-35,Souvenir,20984.97,35.75
+64,Female,18-25,Books,20740.35,47.03
+65,Female,36-45,Souvenir,20351.55,34.15
+66,Male,46-60,Souvenir,18568.59,34.77
+67,Male,26-35,Food & Beverage,18477.59,15.70
+68,Male,36-45,Food & Beverage,17959.82,15.77
+69,Male,60+,Books,16968.00,44.30
+70,Male,36-45,Books,16861.95,45.33
+71,Female,60+,Souvenir,16856.01,33.78
+72,Male,26-35,Books,16301.40,44.91
+73,Female,18-25,Souvenir,16199.13,35.37
+74,Male,18-25,Books,16119.60,46.45
+75,Male,60+,Food & Beverage,15423.27,15.55
+76,Male,18-25,Food & Beverage,14769.52,15.51
+77,Male,26-35,Souvenir,13747.56,35.89
+78,Male,36-45,Souvenir,13559.88,33.65
+79,Male,60+,Souvenir,12398.61,35.22
+80,Male,18-25,Souvenir,10873.71,35.08
