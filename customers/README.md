@@ -151,6 +151,18 @@ The analysis covered:
 
 ---
 
+## Transactions by Shopping Mall — 2021
+
+![Transactions by Mall 2021](tableau/Transactions_By_Mall_2021.png)
+
+---
+
+## Transactions by Shopping Mall — 2022
+
+![Transactions by Mall 2022](tableau/Transactions_By_Mall_2022.png)
+
+---
+
 ## Yearly Revenue Trend
 
 ![Yearly Revenue Trend](tableau/Yearly_Revenue_Trend.png)
