@@ -166,3 +166,15 @@ The analysis covered:
 ## Yearly Revenue Trend
 
 ![Yearly Revenue Trend](tableau/Yearly_Revenue_Trend.png)
+
+---
+
+## Revenue_by_Gender_2021
+
+![Revenue by Gender 2021](tableau/Revenue_by_Gender_2021.png)
+
+---
+
+## Revenue_by_Gender_2022
+
+![Revenue by Gender 2021](tableau/Revenue_by_Gender_2022.png)

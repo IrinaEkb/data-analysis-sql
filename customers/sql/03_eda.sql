@@ -189,3 +189,18 @@ select
 from customer_shopping_data_cleaned
 group by shopping_mall
 order by avg_transaction desc;
+
+select
+    shopping_mall,
+    basket_size,
+    count(*) as number_of_baskets
+from (
+         select
+             shopping_mall,
+             invoice_no,
+             sum(quantity) as basket_size
+         from customer_shopping_data_cleaned
+         group by shopping_mall, invoice_no
+     ) t
+group by shopping_mall, basket_size
+order by shopping_mall, basket_size;
