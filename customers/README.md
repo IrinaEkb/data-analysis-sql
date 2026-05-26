@@ -115,49 +115,49 @@ The analysis covered:
 
 ---
 
-## Monthly Revenue Trend — 2021
+## Monthly Revenue Trend, 2021
 
 ![Monthly Revenue Trend 2021](tableau/Monthly_Revenue_Trend_2021.png)
 
 ---
 
-## Monthly Revenue Trend — 2022
+## Monthly Revenue Trend, 2022
 
 ![Monthly Revenue Trend 2022](tableau/Monthly_Revenue_Trend_2022.png)
 
 ---
 
-## Revenue by Product Category — 2021
+## Revenue by Product Category, 2021
 
 ![Revenue by Category 2021](tableau/Revenue_by_Category_Across_All_Malls_2021.png)
 
 ---
 
-## Revenue by Product Category — 2022
+## Revenue by Product Category, 2022
 
 ![Revenue by Category 2022](tableau/Revenue_by_Category_Across_All_Malls_2022.png)
 
 ---
 
-## Revenue by Shopping Mall — 2021
+## Revenue by Shopping Mall, 2021
 
 ![Revenue by Mall 2021](tableau/Revenue_by_Mall_2021.png)
 
 ---
 
-## Revenue by Shopping Mall — 2022
+## Revenue by Shopping Mall, 2022
 
 ![Revenue by Mall 2022](tableau/Revenue_by_Mall_2022.png)
 
 ---
 
-## Transactions by Shopping Mall — 2021
+## Transactions by Shopping Mall, 2021
 
 ![Transactions by Mall 2021](tableau/Transactions_By_Mall_2021.png)
 
 ---
 
-## Transactions by Shopping Mall — 2022
+## Transactions by Shopping Mall, 2022
 
 ![Transactions by Mall 2022](tableau/Transactions_By_Mall_2022.png)
 
@@ -169,12 +169,12 @@ The analysis covered:
 
 ---
 
-## Revenue_by_Gender_2021
+## Revenue by Gender, 2021
 
-![Revenue by Gender 2021](tableau/Revenue_by_Gender_2021.png)
+![Revenue by Gender, 2021](tableau/Revenue_by_Gender_2021.png)
 
 ---
 
-## Revenue_by_Gender_2022
+## Revenue by Gender, 2022
 
-![Revenue by Gender 2021](tableau/Revenue_by_Gender_2022.png)
+![Revenue by Gender, 2021](tableau/Revenue_by_Gender_2022.png)
