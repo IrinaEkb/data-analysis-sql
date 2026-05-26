@@ -204,3 +204,12 @@ from (
      ) t
 group by shopping_mall, basket_size
 order by shopping_mall, basket_size;
+
+create view basket_level as
+select
+    shopping_mall,
+    invoice_no,
+    sum(quantity) as basket_size,
+    sum(price) as basket_value
+from customer_shopping_data_cleaned
+group by shopping_mall, invoice_no;

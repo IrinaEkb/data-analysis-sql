@@ -178,3 +178,11 @@ The analysis covered:
 ## Revenue by Gender, 2022
 
 ![Revenue by Gender, 2021](tableau/Revenue_by_Gender_2022.png)
+
+---
+
+## Basket Size Distribution by Shopping Mall
+
+![Basket Size Distribution by Mall](tableau/Basket_Size_Distribution_by_Shopping_Mall.png)
+
+---
