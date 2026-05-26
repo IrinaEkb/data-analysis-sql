@@ -115,37 +115,42 @@ The analysis covered:
 
 ---
 
-## Revenue Trends
+## Monthly Revenue Trend — 2021
 
-### Monthly Revenue Trend — 2021
-![Monthly Revenue Trend — 2021](tableau/Monthly Revenue Trend — 2021.png)
-
-### Monthly Revenue Trend — 2022
-![Monthly Revenue Trend — 2022](tableau/Monthly Revenue Trend — 2022.png)
+![Monthly Revenue Trend 2021](tableau/Monthly_Revenue_Trend_2021.png)
 
 ---
 
-## Product Performance
+## Monthly Revenue Trend — 2022
 
-### Revenue by Product Category — 2021
-![Revenue by Product Category — 2021](tableau/Revenue by Category Across All Malls — 2021.png)
-
-### Revenue by Product Category — 2022
-![Revenue by Product Category — 2022](tableau/Revenue by Category Across All Malls — 2022.png)
+![Monthly Revenue Trend 2022](tableau/Monthly_Revenue_Trend_2022.png)
 
 ---
 
-## Location Analysis
+## Revenue by Product Category — 2021
 
-### Revenue by Shopping Mall — 2021
-![Revenue by Shopping Mall — 2021](tableau/Revenue by Mall, 2021.png)
-
-### Revenue by Shopping Mall — 2022
-![Revenue by Shopping Mall — 2022](tableau/Revenue by Mall, 2022.png)
+![Revenue by Category 2021](tableau/Revenue_by_Category_Across_All_Malls_2021.png)
 
 ---
 
-## Overall Performance
+## Revenue by Product Category — 2022
 
-### Yearly Revenue Trend
-![Yearly Revenue Trend](tableau/Yearly Revenue Trend.png)
+![Revenue by Category 2022](tableau/Revenue_by_Category_Across_All_Malls_2022.png)
+
+---
+
+## Revenue by Shopping Mall — 2021
+
+![Revenue by Mall 2021](tableau/Revenue_by_Mall_2021.png)
+
+---
+
+## Revenue by Shopping Mall — 2022
+
+![Revenue by Mall 2022](tableau/Revenue_by_Mall_2022.png)
+
+---
+
+## Yearly Revenue Trend
+
+![Yearly Revenue Trend](tableau/Yearly_Revenue_Trend.png)
