@@ -1,9 +1,13 @@
 # Customer Shopping Data Analysis
 
 ## Project Overview
+
 ---
+
 This project analyzes retail shopping transactions across multiple shopping malls using SQL and Tableau.
+
 ---
+
 The project includes:
 
 ### Data Quality & Preparation
@@ -14,7 +18,9 @@ Revenue, customer, product, mall, and time-series analysis.
 
 ### Customer Churn Forecasting
 Recency-based customer segmentation and churn risk forecasting.
+
 ---
+
 ## Customer shopping data
 
 - File Name: `customer_shopping_data.csv`
@@ -29,6 +35,7 @@ Recency-based customer segmentation and churn risk forecasting.
 - CSV files
 
 ---
+
 # Dataset Information
 
 Main columns used in the analysis:
@@ -344,15 +351,3 @@ The output can be used to prioritize retention initiatives and customer engageme
 - Future customer loss can be approximated through recency-based risk migration.
 
 ---
-
-## Project Value
-
-This analysis demonstrates how churn monitoring and forecasting can be performed even when customer history is limited.
-
-The project combines:
-
-- Customer segmentation
-- Churn risk analysis
-- Scenario-based forecasting
-- Revenue risk estimation
-- Location-level churn monitoring
