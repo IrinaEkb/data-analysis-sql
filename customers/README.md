@@ -216,157 +216,100 @@ order by
 ![Basket Size Distribution by Mall](tableau/Basket_Size_Distribution_by_Shopping_Mall.png)
 
 ---
-# Customer Churn & Forecasting Analysis
 
-## Business Objective
-
-The goal of this analysis was to identify customers at risk of churn and estimate potential future customer loss using recency-based forecasting.
-
-Because the dataset contains only one transaction per customer, traditional churn modeling based on repeat purchase behavior was not possible. Instead, a recency-driven approach was used to evaluate customer inactivity and project future churn risk.
+# Revenue Analysis (2021 vs 2022)
 
 ---
 
-## Dataset Limitation
+## 1. Total Revenue
 
-The dataset contains one transaction per customer.
+| Year | Total Revenue |
+|------|--------------|
+| 2021 | 31,316,304.63 |
+| 2022 | 31,372,826.18 |
 
-As a result:
-
-- Frequency-based churn analysis is limited.
-- Customer lifetime behavior cannot be observed.
-- Predictive modeling is not appropriate for this dataset.
-- Churn forecasting is based on recency and inactivity projections.
-
----
-
-## Business Questions
-
-### Churn Analysis
-
-- How recently did customers make a purchase?
-- Which customers are currently inactive?
-- How can customers be segmented by churn risk?
-
-### Churn Forecasting
-
-- How will customer risk distribution change in the next 90 days?
-- How many customers are projected to become High Risk?
-- How much revenue is associated with projected High Risk customers?
-- Which shopping malls are expected to experience the highest customer loss?
+**Change**
+- Δ = +56,521.55
+- Growth = +0.18%
 
 ---
 
-## Key Metrics
+## 2. Transactions & Basket Metrics
 
-| Metric | Description |
-|----------|----------|
-| Recency | Days since customer's last purchase |
-| Churn Status | Active vs Inactive customer classification |
-| Churn Risk Segment | Low Risk / Medium Risk / High Risk |
-| Revenue at Risk | Revenue associated with projected High Risk customers |
-| Projected Customer Loss | Customers expected to move into the High Risk segment |
+| Metric | 2021 | 2022 | Change |
+|--------|------|------|--------|
+| Transactions | 45,678 | 45,973 | +295 (+0.65%) |
+| Avg Basket Size | 686.1 | 682.3 | -3.8 (-0.55%) |
+| Revenue per Transaction | 686.0 | 682.8 | -3.2 (-0.47%) |
 
 ---
 
-## Example SQL: Churn Risk Segmentation
+## 3. Monthly Revenue Comparison (Key Months)
 
-```sql
-with base as (
-    select
-        customer_id,
-        max(invoice_date) as last_purchase
-    from customer_shopping_data_cleaned
-    group by customer_id
-),
-recency as (
-    select
-        customer_id,
-        datediff('2023-03-31', last_purchase) as recency_days
-    from base
-)
-
-select
-    customer_id,
-    recency_days,
-    case
-        when recency_days <= 180 then 'Low Risk'
-        when recency_days <= 365 then 'Medium Risk'
-        else 'High Risk'
-    end as churn_risk_segment
-from recency;
-```
-
-This query classifies customers into churn risk groups based on the number of days since their most recent purchase.
+| Month | 2021 Revenue | 2022 Revenue | Δ |
+|------|--------------|--------------|----|
+| July | 2,802,468.58 | 2,749,554.99 | -52,913.59 |
+| October | 2,782,418.40 | 2,755,839.69 | -26,578.71 |
 
 ---
 
-## Forecasting Approach
+## 4. Category Contribution (2022 vs 2021)
 
-A scenario-based forecasting framework was implemented.
-
-The analysis assumes that no additional purchases occur during the forecast period. Customer recency is shifted forward by 90 days to estimate how many customers may transition into higher churn risk categories.
-
-This approach does not predict customer behavior directly. Instead, it estimates future risk exposure based on observed inactivity patterns.
-
----
-
-## Example SQL: Mall-Level Customer Loss Forecast
-
-```sql
-with base as (
-
-    select
-        shopping_mall,
-        customer_id,
-        datediff(
-            '2023-03-31',
-            max(invoice_date)
-        ) as recency_days
-    from customer_shopping_data_cleaned
-    group by shopping_mall, customer_id
-
-)
-
-select
-    shopping_mall,
-    count(*) as projected_high_risk_customers
-from base
-where recency_days + 90 > 365
-group by shopping_mall
-order by projected_high_risk_customers desc;
-```
-
-This forecast identifies shopping malls with the highest number of customers projected to enter the High Risk segment within the next 90 days.
-
-The output can be used to prioritize retention initiatives and customer engagement campaigns at the mall level.
+| Category | Revenue Change |
+|----------|---------------|
+| Clothing | -214,241.84 |
+| Shoes | -187,482.10 |
+| Technology | +101,200.00 |
+| Cosmetics | +22,310.45 |
+| Toys | +18,940.12 |
+| Books | +14,550.67 |
+| Food & Beverage | +9,880.33 |
+| Souvenir | +11,364.92 |
 
 ---
 
-## Key Findings
+## 5. Core Drivers Breakdown
 
-- Customer behavior is dominated by one-time purchases.
-- Churn evaluation is primarily driven by recency rather than purchase frequency.
-- Significant differences exist in customer inactivity levels across shopping malls.
-- Transaction values vary substantially across product categories.
-- Future customer loss can be approximated through recency-based risk migration.
+### Core decline
+- Clothing + Shoes = **-401,723.94**
+
+### Growth contribution
+- Technology = +101,200.00
+- Other categories combined = +76,? (distributed growth)
+
+---
+
+## 6. Key Findings
+
+- Total revenue is **stable (+0.18%)**
+- Growth in transactions (+0.65%) was offset by lower basket size (-0.55%)
+- Revenue decline is driven by:
+    - Clothing
+    - Shoes
+- Growth is driven mainly by Technology
+- July and October show noticeable YoY decline
+
+---
+
+## 7. Conclusion
+
+Revenue structure changed, not volume:
+- Core categories declined
+- Smaller categories partially compensated
+- Net result = flat revenue performance
 
 ---
 
 ##  Revenue Time Series & Forecasting
 
-### Monthly Revenue Data Overview
+### Monthly Revenue Trend (2021–2022)
 
-The dataset includes monthly aggregated revenue from January 2021 to March 2023:
-
-2021-01-01 → 2,656,422.78  
-2021-02-01 → 2,358,636.34  
-2021-03-01 → 2,618,434.14  
-...
-2023-03-01 → 683,721.31 (partial month)
+- 2021 monthly range: ~2.35M – 2.80M
+- 2022 monthly range: ~2.31M – 2.75M
 
 ---
 
-### Forecasting Method
+### Forecasting Approach
 
 A scenario-based time series forecasting approach was applied.
 
@@ -379,9 +322,7 @@ Forecast is derived using trend extrapolation in Tableau based on historical mon
 
 ---
 
-### Tableau Visualization
-
-Revenue trend and forecast visualization:
+### Revenue trend and forecast visualization:
 
 ![Revenue Trend & Forecast](tableau/Revenue_Forecast.png)
 
