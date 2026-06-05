@@ -351,3 +351,48 @@ The output can be used to prioritize retention initiatives and customer engageme
 - Future customer loss can be approximated through recency-based risk migration.
 
 ---
+
+##  Revenue Time Series & Forecasting
+
+### Monthly Revenue Data Overview
+
+The dataset includes monthly aggregated revenue from January 2021 to March 2023:
+
+2021-01-01 → 2,656,422.78  
+2021-02-01 → 2,358,636.34  
+2021-03-01 → 2,618,434.14  
+...
+2023-03-01 → 683,721.31 (partial month)
+
+---
+
+### Forecasting Method
+
+A scenario-based time series forecasting approach was applied.
+
+The model assumes:
+- continuation of historical monthly patterns
+- no structural changes in customer behavior
+- no external shocks (promotions, macroeconomic events)
+
+Forecast is derived using trend extrapolation in Tableau based on historical monthly revenue series.
+
+---
+
+### Tableau Visualization
+
+Revenue trend and forecast visualization:
+
+![Revenue Trend & Forecast](tableau/Revenue_Forecast.png)
+
+---
+
+### Key Revenue Insights
+
+- February consistently shows the lowest revenue across years.
+- July and October are the strongest revenue months.
+- September also shows relatively lower performance compared to peak months.
+- Revenue remains stable overall, with fluctuations driven mainly by seasonality rather than growth trend.
+
+---
+
