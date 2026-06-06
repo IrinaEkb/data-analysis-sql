@@ -253,13 +253,23 @@ This analysis compares category-level revenue differences between 2022 and 2021 
 
 ## 5. Core Drivers Breakdown
 
-### Core decline
-- Clothing + Shoes = **-401,723.94**
+### Core Decline
 
-### Growth contribution
-- Technology = +101,200.00
-- Other categories combined = +76,? (distributed growth)
+The overall revenue decline is primarily driven by:
 
+- Clothing: -294,678.56
+
+Clothing is the main negative contributor and represents the largest driver of the overall revenue decrease.
+
+---
+
+### Growth Drivers
+
+Revenue growth is observed in the following categories:
+
+- Technology: +163,800.00
+- Shoes: +136,238.59
+- 
 ---
 
 ## 6. Key Findings
