@@ -36,24 +36,6 @@ Recency-based customer segmentation and churn risk forecasting.
 
 ---
 
-# Dataset Information
-
-Main columns used in the analysis:
-
-| Column Name | Description                   |
-|---|-------------------------------|
-| invoice_no | unique transaction identifier |
-| customer_id | unique customer identifier    |
-| gender | customer gender               |
-| age | customer age                  |
-| category | purchased product category    |
-| quantity | number of purchased items     |
-| price | transaction amount            |
-| payment_method | payment type used             |
-| invoice_date | transaction date              |
-| shopping_mall | name of shopping mall         |
-
-
 # Data Quality & Data Preparation
 
 ## Data Quality Checks
@@ -255,17 +237,18 @@ order by
 
 ## 4. Category Contribution (2022 vs 2021)
 
-| Category | Revenue Change |
-|----------|---------------|
-| Clothing | -214,241.84 |
-| Shoes | -187,482.10 |
-| Technology | +101,200.00 |
-| Cosmetics | +22,310.45 |
-| Toys | +18,940.12 |
-| Books | +14,550.67 |
-| Food & Beverage | +9,880.33 |
-| Souvenir | +11,364.92 |
+This analysis compares category-level revenue differences between 2022 and 2021 to identify which product groups drove overall revenue changes.
 
+| Category | Revenue Change (2022 vs 2021) |
+|----------|-------------------------------|
+| Clothing | -294,678.56 |
+| Shoes | +136,238.59 |
+| Technology | +163,800.00 |
+| Cosmetics | +27,323.52 |
+| Toys | +15,554.56 |
+| Books | +6,756.90 |
+| Souvenir | +1,829.88 |
+| Food & Beverage | -303.34 |
 ---
 
 ## 5. Core Drivers Breakdown
@@ -336,4 +319,10 @@ Forecast is derived using trend extrapolation in Tableau based on historical mon
 - Revenue remains stable overall, with fluctuations driven mainly by seasonality rather than growth trend.
 
 ---
+
+### Additional Revenue Analysis
+
+➡️ [Revenue Analysis & Seasonality](docs/business_insights/revenue_analysis_seasonality.md)
+
+Includes a detailed comparison of peak revenue months and category-level analysis explaining why revenue was lower in 2022 than in 2021 during those periods.
 

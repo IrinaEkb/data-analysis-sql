@@ -213,3 +213,28 @@ select
     sum(price) as basket_value
 from customer_shopping_data_cleaned
 group by shopping_mall, invoice_no;
+
+WITH yearly_revenue AS (
+    SELECT
+        category,
+    YEAR(invoice_date) AS year,
+    SUM(price) AS revenue
+FROM customer_shopping_data_cleaned
+WHERE YEAR(invoice_date) IN (2021, 2022)
+GROUP BY category, YEAR(invoice_date)
+    ),
+
+    pivoted AS (
+SELECT
+    category,
+    SUM(CASE WHEN year = 2022 THEN revenue ELSE 0 END) AS revenue_2022,
+    SUM(CASE WHEN year = 2021 THEN revenue ELSE 0 END) AS revenue_2021
+FROM yearly_revenue
+GROUP BY category
+    )
+
+SELECT
+    category,
+    ROUND(revenue_2022 - revenue_2021, 2) AS revenue_change
+FROM pivoted
+ORDER BY revenue_change ASC;
