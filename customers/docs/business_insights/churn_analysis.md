@@ -38,19 +38,11 @@ As a result:
 
 ---
 
-## Key Metrics
+### Customer Churn Risk Segmentation
 
-| Metric | Description |
-|----------|----------|
-| Recency | Days since customer's last purchase |
-| Churn Status | Active vs Inactive customer classification |
-| Churn Risk Segment | Low Risk / Medium Risk / High Risk |
-| Revenue at Risk | Revenue associated with projected High Risk customers |
-| Projected Customer Loss | Customers expected to move into the High Risk segment |
+* **Strategic Purpose:** Establishes a baseline view of customer inactivity and identifies which customers are most likely to be lost without intervention.
 
----
-
-## Example SQL: Churn Risk Segmentation
+* **Methodological Value:** Calculates customer recency by measuring the number of days since the most recent purchase and assigns each customer to a risk tier (Low, Medium, or High Risk). This creates the foundation for all subsequent churn and forecasting analyses.
 
 ```sql
 with base as (
@@ -78,21 +70,15 @@ select
 from recency;
 ```
 
-This query classifies customers into churn risk groups based on the number of days since their most recent purchase.
+* **Actionable Business Value:** Provides a prioritized customer risk framework that can be used to target retention efforts. Low-risk customers can receive loyalty campaigns, medium-risk customers can be targeted with re-engagement offers, and high-risk customers can be evaluated for win-back initiatives.
 
 ---
 
-## Forecasting Approach
+### Mall-Level Customer Loss Forecast
 
-A scenario-based forecasting framework was implemented.
+* **Strategic Purpose:** Identifies which shopping malls are expected to experience the highest concentration of future customer attrition.
 
-The analysis assumes that no additional purchases occur during the forecast period. Customer recency is shifted forward by 90 days to estimate how many customers may transition into higher churn risk categories.
-
-This approach does not predict customer behavior directly. Instead, it estimates future risk exposure based on observed inactivity patterns.
-
----
-
-## Example SQL: Mall-Level Customer Loss Forecast
+* **Methodological Value:** Applies a forward-looking 90-day recency shift to estimate how many currently active customers will migrate into the High Risk segment if no additional purchases occur. Results are aggregated at the shopping mall level to compare future customer loss exposure across locations.
 
 ```sql
 with base as (
@@ -118,9 +104,102 @@ group by shopping_mall
 order by projected_high_risk_customers desc;
 ```
 
-This forecast identifies shopping malls with the highest number of customers projected to enter the High Risk segment within the next 90 days.
+* **Actionable Business Value:** Highlights locations where customer retention risk is expected to be highest. Business teams can use the results to prioritize marketing spend, loyalty programs, and customer engagement campaigns in malls with the largest projected customer losses.
 
-The output can be used to prioritize retention initiatives and customer engagement campaigns at the mall level.
+---
+
+### Average Quantity per Churn Risk Profile
+
+*   **Strategic Purpose:** Measures the direct relationship between purchase volume (basket size) and customer abandonment.
+*   **Methodological Value:** Groups the entire dataset by Churn Risk Segments (Low, Medium, High Risk based on current recency) and calculates the average item count for each tier. This identifies if bulk-buyers detach from the brand faster than single-item buyers.
+
+```sql
+WITH customer_processing AS (
+    SELECT
+        customer_id,
+        CAST(quantity AS SIGNED) AS item_quantity,
+        DATEDIFF('2023-03-31', STR_TO_DATE(invoice_date, '%Y-%m-%d')) AS recency_days
+    FROM customer_shopping_data_cleaned
+),
+risk_mapping AS (
+    SELECT
+        item_quantity,
+        CASE
+            WHEN recency_days <= 180 THEN 'Low Risk'
+            WHEN recency_days <= 365 THEN 'Medium Risk'
+            ELSE 'High Risk'
+        END AS churn_risk_segment
+    FROM customer_processing
+)
+SELECT
+    churn_risk_segment,
+    COUNT(*) AS total_customers_in_segment,
+    ROUND(AVG(item_quantity), 2) AS avg_items_per_basket
+FROM risk_mapping
+GROUP BY churn_risk_segment
+ORDER BY avg_items_per_basket DESC;
+```
+
+*   **Actionable Business Value:** If the *High Risk* segment shows a lower average quantity than active buyers, single-item impulse shoppers are driving the database decay. Marketing must deploy bundle offers (e.g., "Buy 2, Get 1 Free") at checkout to force larger initial baskets. If the quantity is already high, flat monetary discounts must be used instead.
+
+---
+
+### Payment Method Friction Index
+
+*   **Strategic Purpose:** Identifies the correlation between payment channels and transaction-level customer retention friction.
+*   **Methodological Value:** Calculates the percentage of consumers per payment channel who are already completely inactive and resting in the "High Risk" zone (>365 days silent) relative to the total customer base of that channel.
+
+```sql
+WITH processed_transactions AS (
+    SELECT
+        customer_id,
+        payment_method,
+        DATEDIFF('2023-03-31', STR_TO_DATE(invoice_date, '%Y-%m-%d')) AS recency_days
+    FROM customer_shopping_data_cleaned
+)
+SELECT
+    payment_method,
+    COUNT(*) AS total_acquired_customers,
+    ROUND((COUNT(CASE WHEN recency_days > 365 THEN 1 END) / COUNT(*)) * 100, 2) AS payment_friction_index_pct
+FROM processed_transactions
+GROUP BY payment_method
+ORDER BY payment_friction_index_pct DESC;
+```
+
+*   **Actionable Business Value:** Pinpoints whether anonymous, non-digital payment methods (like *Cash*) generate a higher rate of permanent customer detachment compared to digital methods (like *Credit Cards*). A high cash friction index signals a broken communication loop at checkouts, dictating the need for localized card-collection campaigns or physical loyalty sign-ups at the register.
+
+---
+
+### Demographic Inactivity Velocity (Age & Gender)
+
+*   **Strategic Purpose:** Maps the exact demographic composition of the decaying customer asset base to identify which cohorts drop out the fastest.
+*   **Methodological Value:** Groups consumers into age cohorts and genders, then calculates a forward-looking 90-day velocity by determining exactly how many consumers—and how much gross revenue—will migrate from active windows into the permanent "High Risk" tier if no action is taken.
+
+```sql
+WITH demographic_base AS (
+    SELECT
+        gender,
+        CAST(price AS DECIMAL(10,2)) AS invoice_price,
+        CASE 
+            WHEN age < 30 THEN 'Under 30 (Gen Z)'
+            WHEN age BETWEEN 30 AND 50 THEN '30-50 (Millennials / Gen X)'
+            ELSE 'Over 50 (Boomers)'
+        END AS age_cohort,
+        DATEDIFF('2023-03-31', STR_TO_DATE(invoice_date, '%Y-%m-%d')) AS recency_days
+    FROM customer_shopping_data_cleaned
+)
+SELECT
+    age_cohort,
+    gender,
+    COUNT(*) AS total_acquired_base,
+    COUNT(CASE WHEN recency_days <= 365 AND (recency_days + 90) > 365 THEN 1 END) AS projected_90d_lost_customers,
+    SUM(CASE WHEN recency_days <= 365 AND (recency_days + 90) > 365 THEN invoice_price ELSE 0 END) AS projected_revenue_at_risk
+FROM demographic_base
+GROUP BY age_cohort, gender
+ORDER BY projected_revenue_at_risk DESC;
+```
+
+*   **Actionable Business Value:** Quantifies the precise financial leakage rate across age and gender brackets. The CRM team can utilize the output customer lists to execute automated, post-purchase communication tracks (SMS/Email loops) targeted exclusively at the top-loss cohorts exactly 30, 60, and 90 days following their initial invoice date.
 
 ---
 
@@ -133,3 +212,4 @@ The output can be used to prioritize retention initiatives and customer engageme
 - Future customer loss can be approximated through recency-based risk migration.
 
 ---
+

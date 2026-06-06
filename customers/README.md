@@ -4,7 +4,23 @@
 
 ---
 
-This project analyzes retail shopping transactions across multiple shopping malls using SQL and Tableau.
+This project analyzes retail shopping transactions across multiple shopping malls.
+
+---
+
+## Business Problem
+
+Management observed that overall revenue remained relatively flat between 2021 and 2022 despite a large volume of customer transactions.
+
+The objective of this analysis was to determine:
+
+* what factors were driving revenue performance;
+* which categories contributed to growth or decline;
+* whether customer purchasing behavior changed over time;
+* which months had the greatest impact on annual results;
+* how historical revenue patterns could be used to forecast future performance.
+
+The findings can help prioritize revenue growth opportunities and guide business planning for 2023.
 
 ---
 
@@ -51,8 +67,6 @@ The following checks were performed:
 - data type consistency
 - invalid values in numeric fields (price, quantity, age)
 - date format consistency and parsing issues
-
-No critical data quality issues were identified.
 
 ---
 
@@ -226,16 +240,7 @@ order by
 
 ---
 
-## 3. Monthly Revenue Comparison (Key Months)
-
-| Month | 2021 Revenue | 2022 Revenue | Δ |
-|------|--------------|--------------|----|
-| July | 2,802,468.58 | 2,749,554.99 | -52,913.59 |
-| October | 2,782,418.40 | 2,755,839.69 | -26,578.71 |
-
----
-
-## 4. Category Contribution (2022 vs 2021)
+## 3. Category Contribution (2022 vs 2021)
 
 This analysis compares category-level revenue differences between 2022 and 2021 to identify which product groups drove overall revenue changes.
 
@@ -251,7 +256,7 @@ This analysis compares category-level revenue differences between 2022 and 2021 
 | Food & Beverage | -303.34 |
 ---
 
-## 5. Core Drivers Breakdown
+## 4. Core Drivers Breakdown
 
 ### Core Decline
 
@@ -272,24 +277,28 @@ Revenue growth is observed in the following categories:
 - 
 ---
 
-## 6. Key Findings
+## 5. Monthly Revenue Comparison (Key Months)
 
-- Total revenue is **stable (+0.18%)**
-- Growth in transactions (+0.65%) was offset by lower basket size (-0.55%)
-- Revenue decline is driven by:
-    - Clothing
-    - Shoes
-- Growth is driven mainly by Technology
-- July and October show noticeable YoY decline
+| Month | 2021 Revenue | 2022 Revenue | Δ |
+|------|--------------|--------------|----|
+| July | 2,802,468.58 | 2,749,554.99 | -52,913.59 |
+| October | 2,782,418.40 | 2,755,839.69 | -26,578.71 |
+
+### Additional Revenue Analysis
+
+➡️ [Revenue Analysis & Seasonality](docs/business_insights/revenue_analysis_seasonality.md)
+
+Includes a detailed comparison of peak revenue months and category-level analysis explaining why revenue was lower in 2022 than in 2021 during those periods.
 
 ---
 
-## 7. Conclusion
+## 6. Key Findings
 
-Revenue structure changed, not volume:
-- Core categories declined
-- Smaller categories partially compensated
-- Net result = flat revenue performance
+- Total revenue increased by only 0.18% (+56.5K) despite a 0.65% increase in transactions, indicating that higher sales volume generated only marginal revenue growth. Increasing average customer spend may provide a stronger growth opportunity than relying solely on additional transactions.
+- Average basket value declined from 686.1 to 682.3 (-0.55%), suggesting customers spent slightly less per purchase in 2022. Further analysis could identify opportunities for cross-selling, upselling, or promotional bundling.
+- The Clothing category declined by 294.7K, making it the largest factor limiting overall revenue growth. Understanding whether this decline was driven by lower demand, reduced purchase frequency, or changing customer preferences could help recover lost category performance.
+- Technology (+163.8K) and Shoes (+136.2K) were the strongest-performing categories and accounted for most of the positive revenue change. These categories may represent the most promising areas for future growth initiatives.
+- Revenue underperformed in July (-52.9K) and October (-26.6K) compared with the same months in 2021. Since both months remained among the highest-revenue periods of the year, improving performance during peak sales months could have a disproportionate impact on annual revenue growth.
 
 ---
 
@@ -302,17 +311,26 @@ Revenue structure changed, not volume:
 
 ---
 
+### Purpose of Forecasting Analysis
+
+The forecasting analysis was conducted to estimate expected revenue performance for 2023 based on historical sales patterns observed in 2021–2022.
+
+The forecast helps:
+
+- Identify expected revenue trends and seasonality;
+- Support sales and inventory planning;
+- Establish baseline revenue expectations for 2023;
+- Highlight periods where actual performance may deviate from historical patterns and require further investigation.
+
 ### Forecasting Approach
 
 A scenario-based time series forecasting approach was applied.
 
 The model assumes:
-- continuation of historical monthly patterns
-- no structural changes in customer behavior
-- no external shocks (promotions, macroeconomic events)
-
-Forecast is derived using trend extrapolation in Tableau based on historical monthly revenue series.
-
+- Continuation of historical monthly patterns
+- No structural changes in customer behavior
+- No external shocks (promotions, macroeconomic events)
+ 
 ---
 
 ### Revenue trend and forecast visualization:
@@ -320,19 +338,4 @@ Forecast is derived using trend extrapolation in Tableau based on historical mon
 ![Revenue Trend & Forecast](tableau/Revenue_Forecast.png)
 
 ---
-
-### Key Revenue Insights
-
-- February consistently shows the lowest revenue across years.
-- July and October are the strongest revenue months.
-- September also shows relatively lower performance compared to peak months.
-- Revenue remains stable overall, with fluctuations driven mainly by seasonality rather than growth trend.
-
----
-
-### Additional Revenue Analysis
-
-➡️ [Revenue Analysis & Seasonality](docs/business_insights/revenue_analysis_seasonality.md)
-
-Includes a detailed comparison of peak revenue months and category-level analysis explaining why revenue was lower in 2022 than in 2021 during those periods.
 
