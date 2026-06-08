@@ -36,7 +36,7 @@ Across different projects, the following skills and approaches are applied:
 ## Project Structure
 
 Each project in this repository follows a consistent structure:
-
+```text
 project_name/
 │
 ├── data/ # Raw and processed datasets
@@ -44,7 +44,7 @@ project_name/
 ├── excel/ or tableau/ # Visual analysis (only one used per project)
 ├── images/ # Screenshots and visual outputs
 └── README.md # Project-specific documentation
-
+```
 ---
 
 ## Individual Projects
