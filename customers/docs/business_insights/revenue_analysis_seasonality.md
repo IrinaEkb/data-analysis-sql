@@ -363,7 +363,4 @@ The overall drop of **-$26,578.71** in October presents the exact inverse catego
     *   **July Recovery:** Reclaiming the **$52k gap** by capturing value-seeking apparel shoppers before they migrate to outlets.
     *   **October Acceleration:** Unlocking an additional **$60k–$90k** in latent revenue by ensuring shoe inventory matches the organic demand shown by Clothing and Technology.
 
-# Revenue trend and forecast visualization:
-
-![Revenue Trend & Forecast](../../tableau/Revenue_Forecast.png)
 

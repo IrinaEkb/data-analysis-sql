@@ -110,8 +110,15 @@ The analysis covered:
 - revenue by gender
 - age-based spending behavior
 - category preferences by customer segments
+
 ---
+
 ### For instance, 
+### Customer Segmentation by Age and Product Category
+
+This query groups customers by gender and age bands, and calculates purchase frequency across product categories.
+It is used to identify which demographic groups are associated with higher purchase volumes and category preferences.
+
 ```sql
 select
     gender,
@@ -138,6 +145,7 @@ order by
 ---
 
 # Tableau Visualizations
+This section presents key business insights through interactive dashboards built in Tableau Public. The visualizations are grouped by analytical theme to support revenue, customer, and product analysis.
 
 ---
 
@@ -254,6 +262,7 @@ This analysis compares category-level revenue differences between 2022 and 2021 
 | Books | +6,756.90 |
 | Souvenir | +1,829.88 |
 | Food & Beverage | -303.34 |
+
 ---
 
 ## 4. Core Drivers Breakdown
@@ -274,15 +283,65 @@ Revenue growth is observed in the following categories:
 
 - Technology: +163,800.00
 - Shoes: +136,238.59
-- 
+
 ---
 
-## 5. Monthly Revenue Comparison (Key Months)
+## 5. ## Clothing Revenue Change by Shopping Mall (2021 vs 2022)
 
-| Month | 2021 Revenue | 2022 Revenue | Δ |
-|------|--------------|--------------|----|
-| July | 2,802,468.58 | 2,749,554.99 | -52,913.59 |
-| October | 2,782,418.40 | 2,755,839.69 | -26,578.71 |
+This analysis compares Clothing category revenue across shopping malls to identify where the decline or growth is concentrated.
+
+```sql
+SELECT
+    shopping_mall,
+
+    SUM(CASE WHEN YEAR(invoice_date) = 2021 THEN price ELSE 0 END) AS revenue_2021,
+    SUM(CASE WHEN YEAR(invoice_date) = 2022 THEN price ELSE 0 END) AS revenue_2022,
+
+    SUM(CASE WHEN YEAR(invoice_date) = 2022 THEN price ELSE 0 END)
+    - SUM(CASE WHEN YEAR(invoice_date) = 2021 THEN price ELSE 0 END) AS abs_change,
+
+    ROUND(
+        (
+            SUM(CASE WHEN YEAR(invoice_date) = 2022 THEN price ELSE 0 END)
+            - SUM(CASE WHEN YEAR(invoice_date) = 2021 THEN price ELSE 0 END)
+        )
+        / NULLIF(SUM(CASE WHEN YEAR(invoice_date) = 2021 THEN price ELSE 0 END), 0)
+        * 100, 2
+    ) AS pct_change
+
+FROM customer_shopping_data_cleaned
+WHERE category = 'Clothing'
+GROUP BY shopping_mall
+ORDER BY abs_change ASC;
+```
+
+---
+
+### Results
+
+| Shopping Mall        | Revenue 2021 | Revenue 2022 | Abs Change | % Change |
+|----------------------|-------------:|-------------:|------------:|---------:|
+| Metrocity            | 2,211,589.60 | 2,113,763.52 | -97,826.08  | -4.42%   |
+| Cevahir AVM          | 754,701.20   | 666,177.60   | -88,523.60  | -11.73%  |
+| Kanyon               | 2,848,959.52 | 2,779,340.96 | -69,618.56  | -2.44%   |
+| Mall of Istanbul     | 2,877,767.20 | 2,828,254.00 | -49,513.20  | -1.72%   |
+| Metropol AVM         | 1,469,491.76 | 1,428,080.72 | -41,411.04  | -2.82%   |
+| Viaport Outlet       | 709,689.20   | 700,986.88   | -8,702.32   | -1.23%   |
+| Emaar Square Mall    | 695,585.44   | 695,885.52   | +300.08     | +0.04%   |
+| Forum Istanbul       | 717,191.20   | 721,992.48   | +4,801.28   | +0.67%   |
+| Zorlu Center         | 700,386.72   | 722,892.72   | +22,506.00  | +3.21%   |
+| Istinye Park         | 1,379,767.84 | 1,413,076.72 | +33,308.88  | +2.41%   |
+
+---
+
+### Key Insights
+
+- The largest absolute declines are concentrated in **Metrocity (-97.8K)** and **Cevahir AVM (-88.5K)**, indicating these malls are the primary drivers of the overall Clothing revenue drop.
+- Mid-tier malls such as **Kanyon, Mall of Istanbul, and Metropol AVM** also show consistent but smaller declines, suggesting a broad but moderate downward pressure across major retail locations.
+- Several malls show **positive growth**, including **Istinye Park (+33.3K)**, **Zorlu Center (+22.5K)**, and **Forum Istanbul**, which partially offset the overall decline.
+- The pattern indicates that the Clothing category decline is **not uniform**, but driven by concentrated underperformance in specific high-volume malls rather than system-wide demand collapse.
+
+---
 
 ### Additional Revenue Analysis
 
@@ -302,7 +361,7 @@ Includes a detailed comparison of peak revenue months and category-level analysi
 
 ---
 
-##  Revenue Time Series & Forecasting
+## Revenue Time Series Analysis & Baseline Projection
 
 ### Monthly Revenue Trend (2021–2022)
 
@@ -311,29 +370,32 @@ Includes a detailed comparison of peak revenue months and category-level analysi
 
 ---
 
-### Purpose of Forecasting Analysis
+### Purpose of Analysis
 
-The forecasting analysis was conducted to estimate expected revenue performance for 2023 based on historical sales patterns observed in 2021–2022.
+This analysis evaluates historical revenue patterns and establishes a baseline for expected revenue performance in 2023 based on observed trends in 2021–2022.
 
-The forecast helps:
+The analysis supports:
 
-- Identify expected revenue trends and seasonality;
-- Support sales and inventory planning;
-- Establish baseline revenue expectations for 2023;
-- Highlight periods where actual performance may deviate from historical patterns and require further investigation.
+- identification of revenue trends and seasonality patterns;
+- planning and budgeting decisions;
+- establishment of baseline expectations for 2023;
+- detection of deviations from historical behavior.
 
-### Forecasting Approach
-
-A scenario-based time series forecasting approach was applied.
-
-The model assumes:
-- Continuation of historical monthly patterns
-- No structural changes in customer behavior
-- No external shocks (promotions, macroeconomic events)
- 
 ---
 
-### Revenue trend and forecast visualization:
+### Projection Approach
+
+A scenario-based projection was applied using historical revenue patterns.
+
+The model assumes:
+
+- continuation of observed monthly trends;
+- stable customer behavior;
+- no significant external shocks (e.g., promotions, macroeconomic events);
+
+---
+
+### Revenue Trend and Projection Visualization
 
 ![Revenue Trend & Forecast](tableau/Revenue_Forecast.png)
 

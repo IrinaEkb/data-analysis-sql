@@ -30,17 +30,27 @@ This analysis measures how long customers have been inactive at the dataset cuto
 It establishes the foundation for all retention and risk-based segmentation.
 
 ```sql
+WITH customer_recency AS (
+    SELECT
+        customer_id,
+        MAX(invoice_date) AS last_purchase_date
+    FROM customer_shopping_data_cleaned
+    GROUP BY customer_id
+)
 SELECT
-    CASE 
-        WHEN DATEDIFF('2023-03-31', invoice_date) <= 90 THEN '0–90 days'
-        WHEN DATEDIFF('2023-03-31', invoice_date) BETWEEN 91 AND 180 THEN '91–180 days'
-        WHEN DATEDIFF('2023-03-31', invoice_date) BETWEEN 181 AND 365 THEN '181–365 days'
+    CASE
+        WHEN DATEDIFF('2023-03-31', last_purchase_date) <= 90
+            THEN '0–90 days'
+        WHEN DATEDIFF('2023-03-31', last_purchase_date) BETWEEN 91 AND 180
+            THEN '91–180 days'
+        WHEN DATEDIFF('2023-03-31', last_purchase_date) BETWEEN 181 AND 365
+            THEN '181–365 days'
         ELSE '365+ days'
-    END AS recency_bucket,
-    COUNT(DISTINCT customer_id) AS customers
-FROM customer_shopping_data_cleaned
+        END AS recency_bucket,
+    COUNT(*) AS customers
+FROM customer_recency
 GROUP BY 1
-ORDER BY customers DESC;
+ORDER BY 1;
 ```
 
 | Recency Bucket   | Customers |
@@ -51,13 +61,14 @@ ORDER BY customers DESC;
 | 0–90 days        | 8,637     |
 
 **Business Value:**
-Identifies how quickly the customer base transitions into inactivity and defines the structural risk distribution.
-The customer base is heavily concentrated in long inactivity periods.
 
-- The largest segment (56,494 customers) has not made a purchase for more than 365 days, indicating a fully inactive or highly decayed customer group.
-- Mid-tier inactivity (181–365 days) also represents a significant share (23,153 customers), showing a large portion of customers are transitioning into long-term inactivity.
-- Active customers (0–90 days) form the smallest group (8,637 customers), meaning only a limited portion of the base is currently engaged.
-- 
+Identifies how customer inactivity was distributed at the dataset cutoff date and provides a baseline for retention and reactivation analysis.
+
+- The largest segment (56,494 customers) had not made a purchase for more than 365 days as of the dataset cutoff date (2023-03-31), indicating a highly inactive customer group.
+- Customers inactive for 181–365 days (23,153 customers) represented another substantial segment, suggesting a large share of the customer base was already moving toward long-term inactivity.
+- The 91–180 day segment contained 11,173 customers, reflecting moderate inactivity levels.
+- Customers with purchases within the previous 90 days (8,637 customers) formed the smallest segment, indicating that only a limited portion of the customer base had purchased recently at the dataset cutoff date.
+
 ---
 
 ## 2. Revenue at Risk by Recency Segment
