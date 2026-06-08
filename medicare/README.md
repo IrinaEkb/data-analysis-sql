@@ -1,34 +1,18 @@
 
 # Medicare Spending Analysis Across U.S. States (2014–2023)
 
-## Project Structure
-
-```text
-medicare/
-│
-├── data/
-│   └── state_summary.csv
-│
-├── excel/
-│   ├── cleanedData.png
-│   └── pivotTable.png
-│
-├── 01_data_quality_checks.sql
-├── .gitignore
-└── README.md
-```
-
----
-
 # Project Overview
 
-This project analyzes Medicare spending across U.S. states using CMS aggregated data from 2014–2023.
+This project analyzes Medicare spending across U.S. states using CMS aggregated data (10-year total, not time-series).
+The goal is to understand Medicare resources are distributed across states and which systems show higher pressure, inefficiency, or cost burden.
 
-The analysis focuses on understanding what drives differences in Medicare expenditures across states:
+## This project is designed to answer business-relevant questions:
 
-- utilization (service volume)
-- pricing (cost per service)
-- provider distribution
+Which states consume the highest share of Medicare spending?
+Is spending driven more by service volume or pricing levels?
+How does provider capacity affect system efficiency?
+Where is the healthcare system under the highest operational pressure?
+Which states show early indicators of future resource strain?
 
 ---
 
@@ -179,3 +163,58 @@ Which states show signs of **system overload** or **costly healthcare delivery s
 **4. Use dual-axis policy view**
 - One axis = workload (services per provider)
 - Second axis = pricing efficiency (cost per service)
+
+---
+
+## Future Resource Strain Indicators 
+
+Which states show early indicators of future resource strain in the Medicare system?
+
+---
+
+### Approach 
+Strain is evaluated using structural pressure signals:
+
+- Services per Provider → workload pressure
+- Cost per Service → pricing intensity
+- Payments per Provider → financial burden concentration
+
+---
+
+### Key Results
+
+####  Florida (FL) — Highest operational strain
+- Highest services per provider (3,848)
+- High service share (10.49%)
+- High payments per provider
+
+ Indicates provider-level capacity saturation and strong workload-driven strain.
+
+---
+
+####  California (CA) — System-scale financial pressure
+- Highest total Medicare payments
+- High cost per service (39.19)
+- High payments per provider
+
+ Indicates large-scale financial concentration and cost amplification at system level.
+
+---
+
+####  New Jersey (NJ) — High operational intensity
+- Very high services per provider (3,251)
+- High payments per provider
+
+ Indicates sustained provider overload under high demand conditions.
+
+---
+
+#### 🟠 Emerging pressure states
+Nevada, Arizona, Maryland show early signs of strain driven by combined workload and cost intensity.
+
+---
+
+### Output Link
+Clean dataset used for analysis:
+
+![Clean dataset](./medicare/excel/state_summary_clean.png)
