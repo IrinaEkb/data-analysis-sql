@@ -217,4 +217,4 @@ Nevada, Arizona, Maryland show early signs of strain driven by combined workload
 ### Output Link
 Clean dataset used for analysis:
 
-![Clean dataset](./medicare/excel/state_summary_clean.png)
+![Clean dataset](./excel/state_summary_clean.png)
