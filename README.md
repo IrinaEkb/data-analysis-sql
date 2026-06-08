@@ -61,3 +61,9 @@ Every project includes its own `README.md` file, which contains:
 - Project-specific conclusions
 
 ---
+
+## Data Analytics Projects
+
+- 📊 [Customer Analytics Project](customers/README.md)
+- 🏥 [Medicare Resource Strain Analysis](medicare/README.md)
+
