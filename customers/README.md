@@ -52,6 +52,71 @@ Recency-based customer segmentation and churn risk forecasting.
 
 ---
 
+## Project Structure
+
+```text
+customers/
+├── data
+│   ├── cleaned
+│   │   └── customer_shopping_data_cleaned.csv
+│   ├── exports_of_queries
+│   │   ├── avg_price_gender.csv
+│   │   ├── basket_level.csv
+│   │   ├── data_types_in_each_column_before_cast.csv
+│   │   ├── for_forecasting_avg_and_total_transaction.csv
+│   │   ├── for_forecasting_revenue_by_mall.csv
+│   │   ├── for_forecasting_revenue_category.csv
+│   │   ├── for_forecasting.csv
+│   │   ├── purchases_age_group.csv
+│   │   ├── purchases_category_gender.csv
+│   │   ├── recency_bucket.csv
+│   │   ├── revenue_by_category.csv
+│   │   ├── revenue_by_mall.csv
+│   │   ├── revenue_by_month.csv
+│   │   ├── revenue_by_payment_method.csv
+│   │   ├── revenue_by_year.csv
+│   │   ├── revenue_category_gender.csv
+│   │   ├── total_sales_by_category.csv
+│   │   └── transactions_by_mall.csv
+│   └── raw
+│       └── customer_shopping_data.csv
+│
+├── docs
+│   ├── business_insights
+│   │   ├── churn_analysis.md
+│   │   ├── customer_retention.md
+│   │   └── revenue_analysis_seasonality.md
+│   └── data_dictionary
+│       └── data_dictionary.md
+│
+├── sql
+│   ├── 01_data_quality_checks.sql
+│   ├── 02_data_cleaning.sql
+│   ├── 03_eda.sql
+│   ├── 04_churn_analysis.sql
+│   ├── 05_revenue_forecasting.sql
+│   └── 06_customer_retention.sql
+│
+├── tableau
+│   ├── Basket_Size_Distribution_by_Shopping_Mall.png
+│   ├── Monthly_Revenue_Trend_2021.png
+│   ├── Monthly_Revenue_Trend_2022.png
+│   ├── Revenue_by_Category_Across_All_Malls_2021.png
+│   ├── Revenue_by_Category_Across_All_Malls_2022.png
+│   ├── Revenue_by_Gender_2021.png
+│   ├── Revenue_by_Gender_2022.png
+│   ├── Revenue_by_Mall_2021.png
+│   ├── Revenue_by_Mall_2022.png
+│   ├── Revenue_Forecast.png
+│   ├── Transactions_By_Mall_2021.png
+│   ├── Transactions_By_Mall_2022.png
+│   └── Yearly_Revenue_Trend.png
+│
+└── README.md
+```
+
+---
+
 # Data Quality & Data Preparation
 
 ## Data Quality Checks
