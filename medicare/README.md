@@ -23,6 +23,29 @@ Which states show early indicators of future resource strain?
 
 ---
 
+## Project Structure
+
+```text
+medicare/
+├── data
+│   ├── state_summary_clean.csv
+│   └── state_summary.csv
+│
+├── excel
+│   ├── cleanedData.png
+│   ├── pivotTable1.png
+│   ├── pivotTable2.png
+│   └── state_summary_clean.png
+│
+├── sql
+│   ├── 01_data_quality_checks.sql
+│   └── 02_data_cleaning.sql.sql
+│
+└── README.md
+```
+
+---
+
 # Data Source
 
 CMS Medicare State Summary dataset  
