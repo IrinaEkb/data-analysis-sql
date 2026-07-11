@@ -66,4 +66,5 @@ Every project includes its own `README.md` file, which contains:
 
 - 📊 [Customer Analytics Project](customers/README.md)
 - 🏥 [Medicare Resource Strain Analysis](medicare/README.md)
+- 🚚 [US Logistics Performance Dataset](logistics/README.md) 
 
