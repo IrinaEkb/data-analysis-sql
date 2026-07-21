@@ -1,7 +1,5 @@
 # Warehouse Performance Analysis
 
-## Warehouse Performance Analysis
-
 This analysis evaluates performance across 10 warehouses by comparing shipment volume, transportation costs, cost efficiency, delivery speed, and delivery outcomes. The analysis focuses on identifying differences in operational workload, transportation efficiency, and delivery performance to understand which warehouses operate most effectively and where potential improvement opportunities exist.
 
 ---
