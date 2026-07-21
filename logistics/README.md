@@ -4,7 +4,8 @@ https://www.kaggle.com/datasets/shahriarkabir/us-logistics-performance-dataset
 
 # Tools 
 
-Excel
+Excel Cloud
+PowerPoint Cloud
 
 ## Data Cleaning
 
@@ -19,3 +20,8 @@ Quality checks included:
 
 Detailed cleaning documentation:
 (Data_Cleaning.md)
+
+## Business Problem
+
+The company ships products through multiple warehouses and carriers across the United States. Management needs to understand which factors drive transportation cost, delivery performance, and operational efficiency in order to optimize carrier selection, reduce shipping expenses, and improve service quality.
+
