@@ -19,7 +19,7 @@ Quality checks included:
 - Negative and zero value checks
 
 Detailed cleaning documentation:
-[Data Cleaning Report](./reports/01_Data_Cleaning.md)
+[Data Cleaning Report](analysis/01_Data_Cleaning.md)
 
 ## Business Problem
 
@@ -93,16 +93,16 @@ The analysis evaluates warehouse performance, monthly shipping trends, and carri
 ## Detailed Reports
 
 - **KPI Summary** – comprehensive overview of key logistics performance indicators, including delivery performance, costs, and operational metrics.  
-  → [View KPI Summary](./reports/02_KPI_Summary.md)
+  → [View KPI Summary](analysis/02_KPI_Summary.md)
 
 - **Warehouse Analysis** – detailed analysis of warehouse performance, inventory movement, fulfillment efficiency, and regional differences.  
-  → [View Warehouse Analysis](./reports/03_Warehouse_Analysis.md)
+  → [View Warehouse Analysis](analysis/03_Warehouse_Analysis.md)
 
 - **Monthly Analysis** – month-by-month trends, seasonality, and changes in operational performance over time.  
-  → [View Monthly Analysis](./reports/04_Monthly_Analysis.md)
+  → [View Monthly Analysis](analysis/04_Monthly_Analysis.md)
 
 - **Carrier Analysis** – comparison of carriers based on delivery time, shipping costs, reliability, and overall performance.  
-  → [View Carrier Analysis](./reports/05_Carrier_Analysis.md)
+  → [View Carrier Analysis](analysis/05_Carrier_Analysis.md)
 
 # Recommendations
 
