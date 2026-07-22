@@ -19,7 +19,7 @@ Quality checks included:
 - Negative and zero value checks
 
 Detailed cleaning documentation:
-(Data_Cleaning.md)
+[Data Cleaning Report](./reports/01_Data_Cleaning.md)
 
 ## Business Problem
 
@@ -53,6 +53,8 @@ The analysis evaluates warehouse performance, monthly shipping trends, and carri
 
 ---
 
+![Warehouse Efficiency](./screenshots/03_Pivot_Shipping_Cost_Shipment_Weight_and_Delivery_Efficiency.png)
+
 ## 3. What factors are driving differences in transportation costs?
 
 **Answer:**
@@ -62,6 +64,8 @@ The analysis evaluates warehouse performance, monthly shipping trends, and carri
 - Monthly analysis showed that cost increases were not always related to longer distances. **August reached the highest average shipping cost ($254.13)** despite having a lower average shipping distance, suggesting that carrier pricing, shipment mix, or seasonal factors may influence costs.
 
 ---
+
+![Average Shipping Cost Trend](./screenshots/04_Pivot_Average_Shipping_Cost_Trend.png)
 
 ## 4. Which carriers provide the best balance between cost and service quality?
 
@@ -74,6 +78,8 @@ The analysis evaluates warehouse performance, monthly shipping trends, and carri
 
 ---
 
+![Carrier Cost Efficiency Analysis](./screenshots/05_Pivot_Cost_Efficiency_Analysis.png)
+
 ## 5. Were there seasonal trends affecting logistics performance?
 
 **Answer:**
@@ -83,6 +89,20 @@ The analysis evaluates warehouse performance, monthly shipping trends, and carri
 - **December showed weaker delivery performance**, with the highest delay rate (**14.12%**) and the lowest percentage of shipments delivered without issues (**77.65%**), suggesting potential seasonal pressure on logistics operations.
 
 ---
+
+## Detailed Reports
+
+- **KPI Summary** – comprehensive overview of key logistics performance indicators, including delivery performance, costs, and operational metrics.  
+  → [View KPI Summary](./reports/02_KPI_Summary.md)
+
+- **Warehouse Analysis** – detailed analysis of warehouse performance, inventory movement, fulfillment efficiency, and regional differences.  
+  → [View Warehouse Analysis](./reports/03_Warehouse_Analysis.md)
+
+- **Monthly Analysis** – month-by-month trends, seasonality, and changes in operational performance over time.  
+  → [View Monthly Analysis](./reports/04_Monthly_Analysis.md)
+
+- **Carrier Analysis** – comparison of carriers based on delivery time, shipping costs, reliability, and overall performance.  
+  → [View Carrier Analysis](./reports/05_Carrier_Analysis.md)
 
 # Recommendations
 
