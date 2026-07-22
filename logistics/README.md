@@ -4,8 +4,8 @@ https://www.kaggle.com/datasets/shahriarkabir/us-logistics-performance-dataset
 
 # Tools 
 
-Excel Cloud
-PowerPoint Cloud
+- Excel Cloud
+- PowerPoint Cloud
 
 ## Data Cleaning
 
