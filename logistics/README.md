@@ -2,7 +2,36 @@
 
 https://www.kaggle.com/datasets/shahriarkabir/us-logistics-performance-dataset
 
-# Tools 
+# Project Structure 
+
+``` 
+.
+├── analysis
+│ ├── 01_Data_Cleaning.md
+│ ├── 02_KPI_Summary.md
+│ ├── 03_Warehouse_Analysis.md
+│ ├── 04_Monthly_Analysis.md
+│ └── 05_Carrier_Analysis.md
+│
+├── data
+│ ├── raw
+│ │ └── logistics_raw.csv
+│ └── cleaned
+│ └── logistics_clean.csv
+│
+├── eda
+│ └── EDA.md
+│
+├── forecasting
+│ └── Forecasting_Analysis.md
+│
+├── screenshots
+│ └── Analysis visualizations and forecast charts ...
+│
+└── README.md
+```
+
+## Tools 
 
 - Excel Cloud
 - PowerPoint Cloud
@@ -71,7 +100,7 @@ Potential outliers were investigated using the IQR method to determine whether t
 Based on the investigation, weight and transit time outliers were retained because they represented valid shipment scenarios. Cost outliers were retained but flagged for additional review because their unusually high costs could require further investigation.
 
 Detailed EDA documentation:
-[Exploratory Data Analysis Report](./eda/eda.md)
+[Exploratory Data Analysis Report](eda/EDA.md)
 
 ## Business Problem
 
@@ -168,57 +197,41 @@ Based on the analysis, the following actions are recommended:
 
 # Forecasting Analysis
 
-## Forecasting Objective
+Forecasting models were applied after analyzing historical logistics performance to estimate future shipment demand, transportation costs, and delivery efficiency.
 
-After analyzing historical logistics performance, forecasting models were applied to estimate future operational trends and support better planning decisions.
-The goal of forecasting is to help management anticipate future shipment demand, transportation costs, and potential delivery capacity requirements.
-Three forecasting approaches were selected based on the business questions identified during the analysis:
+The following forecasting methods were selected:
 
-- Forecast Monthly Shipment Volume
-- Forecast Monthly Transportation Cost
-- Forecast Average Delivery Time
+- **3-Month Moving Average** — used to smooth short-term fluctuations and estimate future values based on recent operational patterns.
+- **Linear Trend Forecast** — used to identify potential long-term growth or decline patterns.
 
-## Forecast Monthly Shipment Volume
+Three key operational metrics were forecasted:
 
-**Business Question:**  
-How many shipments should the company expect in future months?
+- Monthly Shipment Volume
+- Monthly Transportation Cost
+- Average Delivery Time
 
-**Forecasting Method:**
-- Moving Average
-- Linear Trend
-- Exponential Smoothing
+Detailed forecasting methodology, calculations, and forecast results:
+[Forecasting Analysis Report](./forecasting/Forecasting_Analysis.md)
 
-**Why this forecast was selected:**
+## Forecasting Insights
 
-Shipment volume directly affects warehouse workload, carrier capacity planning, and transportation resource allocation. Forecasting future shipment demand helps determine whether additional operational capacity or carrier resources may be required.
-Monthly shipment volume was selected because it showed recurring operational patterns throughout the year and provides a foundation for planning future logistics activity.
+### Monthly Shipment Volume
 
-## Forecast Monthly Transportation Cost
+The 3-Month Moving Average forecast estimates stable demand of approximately **173 shipments per month throughout 2024**.
+The Linear Trend forecast shows possible growth from **178 shipments in January 2024 to 198 shipments in December 2024**.
+Historical shipment volume ranged from **139 to 182 shipments per month in 2023** and did not demonstrate a consistent upward trend. Therefore, the Moving Average approach better represents the current operational pattern, while the Linear Trend forecast can be used as a higher-demand scenario for capacity planning.
 
-**Business Question:**  
-How much transportation spending should the company expect in future months?
 
-**Forecasting Method:**
-- Linear Trend
-- Exponential Smoothing
+### Monthly Transportation Cost
 
-**Why this forecast was selected:**
+The 3-Month Moving Average forecast estimates stable transportation costs around **$36.6K per month** in 2024.
+The Linear Trend forecast indicates potential cost growth from **$39.1K in January 2024 to $48.5K in December 2024**.
+Historical costs showed significant monthly variation, including **$44.5K in August 2023**, followed by a decrease to **$31.8K in September 2023**. Because cost changes were not consistently increasing, the Moving Average forecast is more suitable for short-term budgeting. The Linear Trend forecast provides an additional scenario for evaluating possible future cost increases.
 
-Transportation cost is one of the largest operational expenses in logistics. Forecasting future costs helps management improve budgeting, identify potential cost increases, and evaluate whether spending changes are driven by shipment volume, pricing changes, or other factors.
-Monthly transportation cost was selected because the analysis showed that cost fluctuations were not always explained only by shipment volume or distance.
 
-## Forecast Average Delivery Time
+### Average Delivery Time
 
-**Business Question:**  
-What delivery performance level should the company expect in future months?
-
-**Forecasting Method:**
-- Moving Average
-- Exponential Smoothing
-
-**Why this forecast was selected:**
-
-Average transit time is a key service performance indicator. Forecasting delivery time helps identify potential decreases in operational efficiency and supports proactive actions to maintain delivery standards.
-Transit time was selected because delivery speed remained relatively stable throughout the year, making it suitable for identifying future trends and changes in operational performance.
-
+Both forecasting methods produced very similar results.
+The Moving Average forecast predicts delivery times between **4.08 and 4.18 days**, while the Linear Trend forecast predicts **4.19–4.21 days**.
+The small difference between models reflects stable historical delivery performance. Both approaches indicate that significant changes in delivery time are not expected under current operational conditions.
 
