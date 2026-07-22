@@ -220,18 +220,18 @@ Detailed forecasting methodology, calculations, and forecast results:
 The 3-Month Moving Average forecast estimates stable demand of approximately **173 shipments per month throughout 2024**.
 The Linear Trend forecast shows possible growth from **178 shipments in January 2024 to 198 shipments in December 2024**.
 Historical shipment volume ranged from **139 to 182 shipments per month in 2023** and did not demonstrate a consistent upward trend. Therefore, the Moving Average approach better represents the current operational pattern, while the Linear Trend forecast can be used as a higher-demand scenario for capacity planning.
-
+[Monthly Shipment Volume Forecast Chart](./screenshots/Forecast_Monthly_Shipment_Volume.png) 
 
 ### Monthly Transportation Cost
 
 The 3-Month Moving Average forecast estimates stable transportation costs around **$36.6K per month** in 2024.
 The Linear Trend forecast indicates potential cost growth from **$39.1K in January 2024 to $48.5K in December 2024**.
 Historical costs showed significant monthly variation, including **$44.5K in August 2023**, followed by a decrease to **$31.8K in September 2023**. Because cost changes were not consistently increasing, the Moving Average forecast is more suitable for short-term budgeting. The Linear Trend forecast provides an additional scenario for evaluating possible future cost increases.
-
+[Monthly Transportation Cost Forecast Chart](./screenshots/Forecast_Monthly_Transportation_Cost.png)
 
 ### Average Delivery Time
 
 Both forecasting methods produced very similar results.
 The Moving Average forecast predicts delivery times between **4.08 and 4.18 days**, while the Linear Trend forecast predicts **4.19–4.21 days**.
 The small difference between models reflects stable historical delivery performance. Both approaches indicate that significant changes in delivery time are not expected under current operational conditions.
-
+[Average Delivery Time Forecast Chart](./screenshots/Forecast_Average_Delivery_Time.png) 
