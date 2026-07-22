@@ -21,6 +21,58 @@ Quality checks included:
 Detailed cleaning documentation:
 [Data Cleaning Report](analysis/01_Data_Cleaning.md)
 
+## Exploratory Data Analysis (EDA)
+
+Exploratory Data Analysis was performed to understand the dataset structure, summarize key variables, and identify patterns before conducting business analysis.
+
+The original dataset contained **2,000 shipment records and 11 columns** related to shipment details, warehouse operations, carriers, costs, delivery status, and operational performance.
+
+Original dataset fields included:
+
+- Shipment_ID
+- Origin_Warehouse
+- Destination
+- Carrier
+- Shipment_Date
+- Delivery_Date
+- Weight_kg
+- Cost
+- Status
+- Distance_miles
+- Transit_Days
+
+During data preparation and EDA, additional analytical columns were created:
+
+- **Shipment_month** and **Delivery_month** — added to analyze monthly trends and seasonality.
+- **Outlier flags** for Weight_kg, Cost, and Transit_Days — created using the IQR method to identify and evaluate extreme values.
+- **Invalid_Date flag** — created to identify date inconsistencies.
+
+### Overall Numerical Summary
+
+Descriptive statistics were calculated for key operational variables:
+
+| Variable | Average | Median | Minimum | Maximum | Outliers Identified |
+|---|---:|---:|---:|---:|---:|
+| Weight_kg | 30.20 kg | 20.70 kg | 0.20 kg | 5,404.20 kg | 111 |
+| Cost | $205.16 | $196.42 | $17.89 | $6,562.21 | 4 |
+| Distance_miles | 1,275.87 miles | 1,262.50 miles | 101 miles | 2,499 miles | 0 |
+| Transit_Days | 4.18 days | 4 days | 1 day | 12 days | 35 |
+
+### Outlier Analysis Summary
+
+Potential outliers were investigated using the IQR method to determine whether they represented data errors or valid operational scenarios.
+
+| Outlier Category | Criteria | Findings |
+|---|---|---|
+| Weight Outliers | Weight > 66.43 kg (111 shipments) | Outlier shipments had an average weight of **154.53 kg (+124.33 kg)**. Their average cost was **$272.09 (+$66.93)**, while transit time remained similar to normal shipments (**4.35 days, +0.17 days**). |
+| Cost Outliers | Cost > $503.72 (4 shipments) | Outlier shipments had an average cost of **$3,793.01 (+$3,587.85)**. They did not have higher average weight (**25.25 kg, -4.95 kg**) but had longer distances (**1,872 miles, +596 miles**). |
+| Transit Time Outliers | Transit_Days > 8 days (35 shipments) | Outlier shipments had an average transit time of **9.40 days (+5.22 days)**. Longer delivery times were associated with greater distance (**2,019 miles, +743 miles**) rather than shipment weight (**25.06 kg, -5.14 kg**). |
+
+Based on the investigation, weight and transit time outliers were retained because they represented valid shipment scenarios. Cost outliers were retained but flagged for additional review because their unusually high costs could require further investigation.
+
+Detailed EDA documentation:
+[Exploratory Data Analysis Report](./eda/eda.md)
+
 ## Business Problem
 
 The company ships products through multiple warehouses and carriers across the United States. Management needs to understand which factors drive transportation cost, delivery performance, and operational efficiency in order to optimize carrier selection, reduce shipping expenses, and improve service quality.
