@@ -76,7 +76,7 @@ During data preparation and EDA, additional analytical columns were created:
 - **Outlier flags** for Weight_kg, Cost, and Transit_Days — created using the IQR method to identify and evaluate extreme values.
 - **Invalid_Date flag** — created to identify date inconsistencies.
 
-### Overall Numerical Summary
+### Descriptive Analysis: Shipment Characteristics
 
 Descriptive statistics were calculated for key operational variables:
 
@@ -86,6 +86,25 @@ Descriptive statistics were calculated for key operational variables:
 | Cost | $205.16 | $196.42 | $17.89 | $6,562.21 | 4 |
 | Distance_miles | 1,275.87 miles | 1,262.50 miles | 101 miles | 2,499 miles | 0 |
 | Transit_Days | 4.18 days | 4 days | 1 day | 12 days | 35 |
+
+## Descriptive Analysis by Delivery Status
+
+The table below summarizes key shipment characteristics for each delivery status.
+
+| Delivery Status | Avg Transit Days | Avg Shipping Cost | Total Shipping Cost | Avg Distance (miles) | Avg Weight (kg) |
+|-----------------|-----------------:|------------------:|--------------------:|---------------------:|----------------:|
+| Delivered | 4.20 | $208.24 | $335,687.78 | 1,289.13 | 31.01 |
+| Delayed | 4.22 | $201.66 | $39,122.86 | 1,263.50 | 28.23 |
+| Lost | 3.80 | $175.32 | $7,889.19 | 1,133.71 | 26.60 |
+| Returned | 3.94 | $196.36 | $6,283.64 | 1,254.44 | 24.67 |
+| In Transit | 3.99 | $170.11 | $12,928.10 | 1,113.80 | 22.35 |
+
+### Key Findings
+
+- Transit time is consistent across all shipment statuses.
+- Delayed shipments have similar cost and travel similar distances as delivered shipments.
+- Lost and returned shipments are generally less expensive and travel shorter distances.
+- Higher shipping cost and longer delivery distance are not associated with delivery issues.
 
 ### Outlier Analysis Summary
 
