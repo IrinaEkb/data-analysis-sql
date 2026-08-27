@@ -99,8 +99,6 @@ Total revenue in the dataset was **$68.55M**.
 
 The main finding is that revenue was **essentially flat between 2021 and 2022**. The business maintained its revenue base, but there was no meaningful annual growth.
 
-![Yearly Revenue Trend](tableau/Yearly_Revenue_Trend.png)
-
 ## Where Revenue Comes From
 
 Revenue is highly concentrated in three product categories:
