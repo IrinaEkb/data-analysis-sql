@@ -134,8 +134,6 @@ The analysis evaluates warehouse performance, monthly shipping trends, and carri
 
 ## 1. What is the overall performance of the logistics network?
 
-**Answer:**
-
 - The company processed **2,000 shipments** in 2023 with total transportation costs of **$401.9K**.
 - Shipments covered **2.55 million miles** with an average transportation cost of **$205.16 per shipment** and **$0.16 per mile**.
 - The average transit time was **4.18 days**, showing a relatively consistent delivery cycle across the network.
@@ -145,10 +143,8 @@ The analysis evaluates warehouse performance, monthly shipping trends, and carri
 
 ## 2. Which warehouses operate most efficiently?
 
-**Answer:**
-
 - **Warehouse_CHI demonstrated the strongest overall performance**, combining the fastest average transit time (**3.96 days**) and the lowest average shipping cost (**$185.39**). Its average shipment weight (**28.97 kg**) was close to the network average, indicating that lower costs were not caused by significantly lighter shipments.
-- **Warehouse_NYC achieved the highest on-time delivery performance (**88.8%**) and the lowest delayed shipment rate (**5.9%**), showing strong delivery execution despite handling the lowest shipment volume.
+- **Warehouse_NYC achieved the highest on-time delivery performance** (**88.8%**) and the lowest delayed shipment rate (**5.9%**), showing strong delivery execution despite handling the lowest shipment volume.
 - **Warehouse_MIA and Warehouse_ATL require further review** due to weaker delivery outcomes. Warehouse_MIA had the lowest on-time delivery performance (**78.1%**) and the highest in-transit rate (**6.0%**), while Warehouse_ATL recorded the highest lost shipment rate (**4.35%**).
 
 ---
@@ -156,8 +152,6 @@ The analysis evaluates warehouse performance, monthly shipping trends, and carri
 ![Warehouse Efficiency](./screenshots/03_Pivot_Shipping_Cost_Shipment_Weight_and_Delivery_Efficiency.png)
 
 ## 3. What factors are driving differences in transportation costs?
-
-**Answer:**
 
 - Shipment volume was one of the main drivers of total transportation spending. **Warehouse_LA and Warehouse_HOU handled the highest shipment volumes** (**220 and 212 shipments**) and generated the highest total transportation costs (**$49.6K and $48.2K**).
 - Higher costs were not explained by shipment volume alone. For example, **Warehouse_LA had a higher average shipment weight (**33.42 kg**), which partially explains increased transportation costs, while Warehouse_HOU had similar shipment characteristics but higher costs requiring additional review.
@@ -169,8 +163,6 @@ The analysis evaluates warehouse performance, monthly shipping trends, and carri
 
 ## 4. Which carriers provide the best balance between cost and service quality?
 
-**Answer:**
-
 - **UPS demonstrated the strongest reliability performance**, achieving the highest percentage of shipments delivered without issues (**86.33%**) and **0% lost shipments**.
 - **USPS provided the strongest cost efficiency**, with the lowest average shipping cost (**$182.66**) and one of the fastest average delivery times (**4.05 days**).
 - **Amazon Logistics showed potential service quality concerns**, with the lowest percentage of shipments delivered without issues (**79.20%**) and the highest lost shipment rate (**4.38%**).
@@ -181,8 +173,6 @@ The analysis evaluates warehouse performance, monthly shipping trends, and carri
 ![Carrier Cost Efficiency Analysis](./screenshots/05_Pivot_Cost_Efficiency_Analysis.png)
 
 ## 5. Were there seasonal trends affecting logistics performance?
-
-**Answer:**
 
 - Shipment volume remained relatively stable throughout the year, ranging from **139 shipments in February** to **182 shipments in August**.
 - **August and November showed higher transportation costs**, but the increase was not fully explained by shipment volume or distance, indicating other factors such as carrier pricing or shipment characteristics.
