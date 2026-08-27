@@ -78,4 +78,41 @@ The negative correlation (-0.15) means that states with higher baseline prices (
 ### Impact of Markups on Spending (0.03)
 The near-zero correlation (0.03) proves that hospital markup ratios (avg_markup_ratio) have completely no statistical relationship with how much Medicare ultimately spends in a state.
 
+---
 
+# Analysis of Spending Drivers and Operational Pressure
+![Total_Payments_Volume](./screenshots/Total_Payments_Volume.png)
+
+* **California (CA)** consumes the absolute **highest share of Medicare spending** at **10.92%** (**93,195,368,563.161**), despite delivering a lower volume of services (**2,377,946,223.000**) than Florida (FL). This proves its spending is heavily driven by elevated **pricing levels** (**39.192** per service).
+* **Florida (FL)** consumes the second-highest share of Medicare spending at **9.42%** (**80,396,885,535.752**) but leads the nation in physical service volume, delivering **2,564,971,227.000** total services. This establishes Florida as the region under the **highest operational pressure**, where spending is driven strictly by massive **service volume**.
+* **Texas (TX)** consumes the third-highest share of Medicare spending at **7.37%** (**62,945,994,956.156**), demonstrating a more balanced baseline where an expansive volume of **1,889,700,097.000** services is paired with a moderate pricing level of **33.310** per service.
+
+### 💡 Recommendations
+* **Implement Price Controls in CA:** Target structural costs and reimbursement rates in California to curb pricing-driven budget expansion, as it represents the largest single-state drain on national funds.
+* **Audit Florida's Model for Scalability:** Benchmark Florida's healthcare infrastructure to understand how it sustains peak national service volume at lower relative unit costs.
+
+---
+
+# Provider Workload and Healthcare System Pressure
+![Provider_Workload_Provider_Payment](./screenshots/Provider_Workload_Provider_Payment.png) 
+
+* **Florida (FL)** demonstrates how **provider capacity severely affects system efficiency** by consolidating the highest provider workload at **3,848.061** services per provider, which simultaneously forces the highest payment per provider at **120,614.265**.
+* **California (CA)** reveals a stark contrast in system efficiency, where a larger provider network (**838,654.000** providers) yields a substantially lower individual workload of **2,835.432** services per provider, yet maintains a high payment per provider of **111,124.932** due to its higher cost-per-service structure.
+* **Texas (TX)** shows an alternative efficiency breakdown with a lower payment per provider of **92,164.420** across its network of **682,975.000** providers, managing a workload of **2,766.866** services per individual.
+
+### 💡 Recommendations
+* **Expand Provider Networks in FL:** Incentivize new healthcare providers to relocate to Florida to increase provider capacity, mitigate severe individual workload strains, and lower the risk of systemic burnout.
+* **Review Provider Utilization in CA:** Investigate California's lower provider utilization rate to ensure high provider compensation aligns with actual healthcare access metrics.
+
+---
+
+# Insurance Markup Ratios and Cost per Service Strain
+![Average_Markup_Ratio_Cost_of_Service](./screenshots/Average_Markup_Ratio_Cost_of_Service.png) 
+
+* **Texas (TX)** highlights a key **early indicator of future resource strain**, exhibiting the highest commercial average markup ratio at **4.263** among the top three states. This aggressive market markup risks driving up future program costs even while its current real payment per service remains moderate at **33.310**.
+* **California (CA)** combines a substantial commercial markup ratio of **3.678** with a high baseline real cost of **39.192** per service, showing that its top-tier budget consumption is driven by a mix of market markups and underlying pricing levels.
+* **Florida (FL)** maintains the lowest commercial markup ratio of the group at **3.574**, further reinforcing that its financial pressure is volume-driven rather than commercially inflated.
+
+### 💡 Recommendations
+* **Monitor Commercial Markups in TX:** Introduce policy tracking or transparency rules on commercial health insurance markups in Texas to prevent aggressive market pricing from inflating future real costs of service.
+* **Subsidize Baseline Efficiency:** Support volume-heavy frameworks like Florida's to ensure commercial markups do not compromise the state's capacity to process peak national service volume.
