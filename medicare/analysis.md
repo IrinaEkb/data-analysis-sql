@@ -56,15 +56,6 @@
 | VT | 1,173,084,100.77 | 33,979,774.00 | 28,006.00 | 3.354 | 34.523 | 1,213.303 | 41,886.885 | 0.14% |
 | WY | 1,133,885,036.87 | 37,652,626.00 | 19,794.00 | 4.386 | 30.114 | 1,902.224 | 57,284.280 | 0.13% |
 
-## National Baseline Totals and Averages
-
-* **Total Payments of all states and DC:** $853,628,187,740.99
-* **Total services in US:** 24,453,052,136.00
-* **Total number of providers:** 10,575,337.00
-* **Average Payment per Service:** $36.08
-* **Average Services per Provider:** 2,063.82
-* **Average Payment per Provider:** $72,379.70
-
 ---
 
 ## Correlation Findings
