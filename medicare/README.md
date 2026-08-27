@@ -81,5 +81,4 @@ Data cleaning and validation steps included:
 
 ---
 
-# Insurance Markup Ratios and Cost per Service Strain
 ![Medicare Dashboard](./screenshots/Medicare_Spending.png)  

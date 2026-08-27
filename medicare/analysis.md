@@ -80,6 +80,24 @@ The near-zero correlation (0.03) proves that hospital markup ratios (avg_markup_
 
 ---
 
+### National Overview Metrics
+
+| Metric | Value |
+| :--- | :--- |
+| **Total Payments (All States & DC)** | $853,628,187,740.99 |
+| **Total Services in US** | 24,453,052,136.00 |
+| **Total Number of Providers** | 10,575,337.00 |
+
+### Key Efficiency & Performance Indicators
+
+| Indicator | Average Value |
+| :--- | :--- |
+| **Average Payment per Service** | $36.08 |
+| **Average Services per Provider** | 2,063.82 |
+| **Average Payment per Provider** | $72,379.70 |
+
+---
+
 # Analysis of Spending Drivers and Operational Pressure
 ![Total_Payments_Volume](./screenshots/Total_Payments_Volume.png)
 
