@@ -165,3 +165,35 @@ select *
 from customer_shopping_data
 where price <= 0;
 -- no errors
+
+
+-- comparison: raw data and cleaned data
+
+
+SELECT *
+FROM customer_shopping_data_cleaned;
+
+SELECT
+    (SELECT COUNT(*) FROM customer_shopping_data) AS original_rows,
+    (SELECT COUNT(*) FROM customer_shopping_data_cleaned) AS cleaned_rows;
+
+SELECT
+    (SELECT SUM(quantity) FROM customer_shopping_data) AS original_quantity,
+    (SELECT SUM(quantity) FROM customer_shopping_data_cleaned) AS cleaned_quantity,
+
+    (SELECT SUM(price) FROM customer_shopping_data) AS original_price,
+    (SELECT SUM(price) FROM customer_shopping_data_cleaned) AS cleaned_price;
+
+SELECT
+    r.invoice_no,
+    r.customer_id,
+    r.quantity AS original_quantity,
+    c.quantity AS cleaned_quantity,
+    r.price AS original_price,
+    c.price AS cleaned_price
+FROM customer_shopping_data r
+         JOIN customer_shopping_data_cleaned c
+              ON r.invoice_no = c.invoice_no
+WHERE
+    r.quantity <> c.quantity
+   OR r.price <> c.price;

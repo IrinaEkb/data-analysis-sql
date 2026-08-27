@@ -1,17 +1,17 @@
 
-create view customer_shopping_data_cleaned as
-select
-    trim(invoice_no) as invoice_no,
-    trim(customer_id) as customer_id,
-    trim(gender) as gender,
-    age,
-    trim(category) as category,
-    cast(trim(quantity) as signed) as quantity,
-    cast(trim(price) as decimal(10,2)) as price,
-    trim(payment_method) as payment_method,
-    str_to_date(trim(invoice_date), '%d/%m/%Y') as invoice_date,
-    trim(shopping_mall) as shopping_mall
-from customer_shopping_data;
+DROP TABLE IF EXISTS customer_shopping_data_cleaned;
 
-select * from customer_shopping_data_cleaned;
+CREATE TABLE customer_shopping_data_cleaned AS
+SELECT
+    TRIM(invoice_no) AS invoice_no,
+    TRIM(customer_id) AS customer_id,
+    TRIM(gender) AS gender,
+    age,
+    TRIM(category) AS category,
+    CAST(TRIM(quantity) AS SIGNED) AS quantity,
+    CAST(TRIM(price) AS DECIMAL(10,2)) AS price,
+    TRIM(payment_method) AS payment_method,
+    STR_TO_DATE(TRIM(invoice_date), '%d/%m/%Y') AS invoice_date,
+    TRIM(shopping_mall) AS shopping_mall
+FROM customer_shopping_data;
 
